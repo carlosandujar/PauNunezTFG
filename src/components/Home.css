@@ -1,0 +1,23 @@
+.home {
+  width: 100%;
+  min-height: 1080px;
+  background-size: cover;
+  text-align: center;
+}
+
+.home select {
+  margin: 2rem 0rem 1rem 0rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.5rem;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.home a {
+  margin: 0rem 0rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.5rem;
+  border: 1px solid white;
+  color: white;
+}
