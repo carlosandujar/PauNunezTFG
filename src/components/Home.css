@@ -3,6 +3,7 @@
   min-height: 1080px;
   background-size: cover;
   text-align: center;
+  padding: 1rem 0rem;
 }
 
 .home select {
@@ -20,4 +21,17 @@
   font-size: 1.5rem;
   border: 1px solid white;
   color: white;
+}
+
+.jumbotron-wrapper {
+  max-width: 50%;
+  margin: 0rem auto 1rem;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+}
+.carousel-wrapper {
+  max-width: 50%;
+  margin: 0 auto;
+  border: 1px solid white;
 }
