@@ -42,7 +42,7 @@ export default class PointcloudNavigator extends React.Component {
     });
 
     // Load and add point cloud to scene
-    let url = `./pointclouds/pedret/pedret_interior_${this.props.id}/metadata.json`;
+    let url = `./pointclouds/pedret/model_10_100/metadata.json`;
     Potree.loadPointCloud(url).then(
       (e) => {
         let scene = this.viewer.scene;
@@ -56,7 +56,24 @@ export default class PointcloudNavigator extends React.Component {
 
         scene.addPointCloud(pointcloud);
 
-        this.viewer.fitToScreen();
+        // Set the default camera
+        scene.view.position.set(...this.props.DefaultCamera.pos);
+        scene.view.lookAt(...this.props.DefaultCamera.target);
+
+        let volume = new Potree.BoxVolume();
+        volume.name = this.props.bb.box7.name;
+        volume.position.set(...this.props.bb.box7.pos);
+        volume.scale.set(...this.props.bb.box7.siz);
+        volume.rotation.set(...this.props.bb.box7.rot);
+        volume.clip = true;
+        volume.visible = false;
+
+        // scene.addVolume(volume);
+        this.viewer.setClipTask(Potree.ClipTask.SHOW_INSIDE);
+
+        // This forces the camera to fit the scene in the screen
+        // Disable to define a custom camera position and lookAt
+        // this.viewer.fitToScreen();
       },
       (e) => console.err("ERROR: ", e)
     );

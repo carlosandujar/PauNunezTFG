@@ -21,6 +21,7 @@ const HOME_BG = [home_bg1, home_bg2, home_bg3, home_bg4];
 
 const Home = (props) => {
   const [pointCloudID, setPointCloudID] = useState("0");
+  const [clippingBox, setClippingBox] = useState({});
 
   // useEffect(() => {
   //   document.getElementById(
@@ -37,6 +38,13 @@ const Home = (props) => {
   //   }, 10e3);
   //   return () => clearInterval(interval);
   // }, []);
+
+  // const handleInputClipBox = (e, type, coord) => {
+  //   setClippingBox((prev) => ({
+  //     ...prev,
+  //     type: { ...prev[type], `${coord}`: e.target.value },
+  //   }));
+  // };
 
   useEffect(() => {
     AOS.init({
@@ -55,7 +63,7 @@ const Home = (props) => {
               onClick={() => {
                 changeLang("ca");
               }}
-              style={{ opacity: l == "ca" ? 1 : 0.4 }}
+              style={{ opacity: l === "ca" ? 1 : 0.4 }}
             >
               <img src={ca} alt="" />
             </button>
@@ -64,7 +72,7 @@ const Home = (props) => {
               onClick={() => {
                 changeLang("es");
               }}
-              style={{ opacity: l == "es" ? 1 : 0.4 }}
+              style={{ opacity: l === "es" ? 1 : 0.4 }}
             >
               <img src={es} alt="" />
             </button>
@@ -73,7 +81,7 @@ const Home = (props) => {
               onClick={() => {
                 changeLang("en");
               }}
-              style={{ opacity: l == "en" ? 1 : 0.4 }}
+              style={{ opacity: l === "en" ? 1 : 0.4 }}
             >
               <img src={en} alt="" />
             </button>
@@ -115,6 +123,32 @@ const Home = (props) => {
             <option value="3">PointCloud 3</option>
           </select>
           <br></br>
+          {/* <input
+            type="number"
+            onChange={(e) => handleInputClipBox(e, "pos", "x")}
+          ></input>
+          <input
+            type="number"
+            onChange={(e) => handleInputClipBox(e, "pos", "y")}
+          ></input>
+          <input
+            type="number"
+            onChange={(e) => handleInputClipBox(e, "pos", "z")}
+          ></input>
+          <br></br>
+          <input
+            type="number"
+            onChange={(e) => handleInputClipBox(e, "sca", "x")}
+          ></input>
+          <input
+            type="number"
+            onChange={(e) => handleInputClipBox(e, "sca", "y")}
+          ></input>
+          <input
+            type="number"
+            onChange={(e) => handleInputClipBox(e, "sca", "z")}
+          ></input>
+          <br></br> */}
           <Link
             to="/pointcloudnavigator"
             onClick={() => {

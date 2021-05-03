@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { LangContext, langs } from "./lang-context";
+import BoundingBoxes, { DefaultCamera } from "./config/viewer-variables";
 import "./App.css";
 import Home from "./components/Home";
 import PointcloudNavigator from "./components/PointcloudNavigator";
@@ -29,7 +30,11 @@ function App() {
               <Home callback={(id) => setPointCloudID(id)} />
             </Route>
             <Route path="/PointcloudNavigator">
-              <PointcloudNavigator id={pointCloudID} />
+              <PointcloudNavigator
+                id={pointCloudID}
+                bb={BoundingBoxes}
+                DefaultCamera={DefaultCamera}
+              />
             </Route>
           </Switch>
         </Router>
