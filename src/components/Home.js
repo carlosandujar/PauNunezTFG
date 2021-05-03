@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Carousel, Jumbotron, Container } from "react-bootstrap";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import BackgroundSlider from "react-background-slider";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -20,9 +23,6 @@ import en from "../assets/img/lang/en.png";
 const HOME_BG = [home_bg1, home_bg2, home_bg3, home_bg4];
 
 const Home = (props) => {
-  const [pointCloudID, setPointCloudID] = useState("0");
-  const [clippingBox, setClippingBox] = useState({});
-
   // useEffect(() => {
   //   document.getElementById(
   //     "home"
@@ -116,12 +116,36 @@ const Home = (props) => {
               <img className="d-block w-100" src={home_bg4} alt="First slide" />
             </Carousel.Item>
           </Carousel>
-          <select onChange={(e) => setPointCloudID(e.target.value)}>
-            <option value="0">PointCloud 0</option>
-            <option value="1">PointCloud 1</option>
-            <option value="2">PointCloud 2</option>
-            <option value="3">PointCloud 3</option>
-          </select>
+          <Accordion className="accordion-bb">
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                  Selecciona les zones d'interés
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <div>
+                  {props.bb.map((i) => (
+                    <div
+                      key={i.id}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <input
+                        type="checkbox"
+                        name="checkbox"
+                        id="checkbox"
+                        onChange={(e) => props.handleBBCheckbox(e, i.id)}
+                        defaultChecked={props.activeBB[i.id]}
+                        // onBlur={handleBlur}
+                        // value={values.checkbox}
+                      />
+                      <span>{`${i.name}`}</span>
+                    </div>
+                  ))}
+                </div>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
           <br></br>
           {/* <input
             type="number"
@@ -149,14 +173,7 @@ const Home = (props) => {
             onChange={(e) => handleInputClipBox(e, "sca", "z")}
           ></input>
           <br></br> */}
-          <Link
-            to="/pointcloudnavigator"
-            onClick={() => {
-              props.callback(pointCloudID);
-            }}
-          >
-            Click!
-          </Link>
+          <Link to="/pointcloudnavigator">Explorar en 3D</Link>
         </div>
       )}
     </LangContext.Consumer>

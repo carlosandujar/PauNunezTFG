@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { LangContext, langs } from "./lang-context";
-import BoundingBoxes, { DefaultCamera } from "./config/viewer-variables";
+import BoundingBoxes, {
+  CleanUpBoundingBoxes,
+  Cameras,
+} from "./config/viewer-variables";
 import "./App.css";
 import Home from "./components/Home";
 import PointcloudNavigator from "./components/PointcloudNavigator";
@@ -10,7 +13,13 @@ function App() {
   const [lang, changeLang] = useState(
     langs[localStorage.getItem("lang") || "ca"]
   );
-  const [pointCloudID, setPointCloudID] = useState("0");
+  const [activeBB, setActiveBB] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+
+  const handleBBCheckbox = (e, i) => {
+    let arr = [...activeBB];
+    arr[i] = !arr[i];
+    setActiveBB(arr);
+  };
 
   return (
     <div className="App">
@@ -27,13 +36,18 @@ function App() {
         <Router basename="/">
           <Switch>
             <Route exact path="/">
-              <Home callback={(id) => setPointCloudID(id)} />
+              <Home
+                bb={BoundingBoxes}
+                handleBBCheckbox={handleBBCheckbox}
+                activeBB={activeBB}
+              />
             </Route>
             <Route path="/PointcloudNavigator">
               <PointcloudNavigator
-                id={pointCloudID}
                 bb={BoundingBoxes}
-                DefaultCamera={DefaultCamera}
+                activeBB={activeBB}
+                cleanUpBB={CleanUpBoundingBoxes}
+                cameras={Cameras}
               />
             </Route>
           </Switch>
