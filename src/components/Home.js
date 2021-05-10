@@ -8,11 +8,11 @@ import BackgroundSlider from "react-background-slider";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Home.css";
-import { LangContext } from "../lang-context";
-import home_bg1 from "../assets/img/home_bg/int1.jpg";
-import home_bg2 from "../assets/img/home_bg/int2.jpg";
-import home_bg3 from "../assets/img/home_bg/ext1.jpg";
-import home_bg4 from "../assets/img/home_bg/ext2.jpg";
+import { LangContext } from "../config/lang-context";
+import home_bg1 from "../assets/img/carousel/int1.jpg";
+import home_bg2 from "../assets/img/carousel/int2.jpg";
+import home_bg3 from "../assets/img/carousel/ext1.jpg";
+import home_bg4 from "../assets/img/carousel/ext2.jpg";
 import ca from "../assets/img/lang/ca.png";
 import es from "../assets/img/lang/es.png";
 import en from "../assets/img/lang/en.png";
@@ -23,29 +23,6 @@ import en from "../assets/img/lang/en.png";
 const HOME_BG = [home_bg1, home_bg2, home_bg3, home_bg4];
 
 const Home = (props) => {
-  // useEffect(() => {
-  //   document.getElementById(
-  //     "home"
-  //   ).style.backgroundImage = `${linearGradientBG}, url("${
-  //     HOME_BG[Math.floor(Math.random() * HOME_BG.length)]
-  //   }")`;
-  //   const interval = setInterval(() => {
-  //     document.getElementById(
-  //       "home"
-  //     ).style.backgroundImage = `${linearGradientBG}, url("${
-  //       HOME_BG[Math.floor(Math.random() * HOME_BG.length)]
-  //     }")`;
-  //   }, 10e3);
-  //   return () => clearInterval(interval);
-  // }, []);
-
-  // const handleInputClipBox = (e, type, coord) => {
-  //   setClippingBox((prev) => ({
-  //     ...prev,
-  //     type: { ...prev[type], `${coord}`: e.target.value },
-  //   }));
-  // };
-
   useEffect(() => {
     AOS.init({
       duration: 1.25e3,
@@ -95,7 +72,7 @@ const Home = (props) => {
               <p>{lang.home.jumbotron.p2}</p>
             </Container>
           </Jumbotron>
-          <Carousel
+          {/* <Carousel
             controls={false}
             indicators={false}
             interval={5000}
@@ -115,7 +92,7 @@ const Home = (props) => {
             <Carousel.Item>
               <img className="d-block w-100" src={home_bg4} alt="First slide" />
             </Carousel.Item>
-          </Carousel>
+          </Carousel> */}
           <Accordion className="accordion-bb">
             <Card>
               <Card.Header>
@@ -147,32 +124,6 @@ const Home = (props) => {
             </Card>
           </Accordion>
           <br></br>
-          {/* <input
-            type="number"
-            onChange={(e) => handleInputClipBox(e, "pos", "x")}
-          ></input>
-          <input
-            type="number"
-            onChange={(e) => handleInputClipBox(e, "pos", "y")}
-          ></input>
-          <input
-            type="number"
-            onChange={(e) => handleInputClipBox(e, "pos", "z")}
-          ></input>
-          <br></br>
-          <input
-            type="number"
-            onChange={(e) => handleInputClipBox(e, "sca", "x")}
-          ></input>
-          <input
-            type="number"
-            onChange={(e) => handleInputClipBox(e, "sca", "y")}
-          ></input>
-          <input
-            type="number"
-            onChange={(e) => handleInputClipBox(e, "sca", "z")}
-          ></input>
-          <br></br> */}
           <Link to="/pointcloudnavigator">Explorar en 3D</Link>
         </div>
       )}

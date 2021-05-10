@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { LangContext, langs } from "./lang-context";
+import { LangContext, langs } from "./config/lang-context";
 import BoundingBoxes, {
   CleanUpBoundingBoxes,
   Cameras,
 } from "./config/viewer-variables";
 import "./App.css";
-import Home from "./components/Home";
+// import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import Homee from "./components/Homee";
 import PointcloudNavigator from "./components/PointcloudNavigator";
 
 function App() {
@@ -36,11 +38,15 @@ function App() {
         <Router basename="/">
           <Switch>
             <Route exact path="/">
-              <Home
+              {/* <Home
                 bb={BoundingBoxes}
                 handleBBCheckbox={handleBBCheckbox}
                 activeBB={activeBB}
-              />
+              /> */}
+              <>
+                <NavBar />
+                <Homee />
+              </>
             </Route>
             <Route path="/PointcloudNavigator">
               <PointcloudNavigator
@@ -58,3 +64,5 @@ function App() {
 }
 
 export default App;
+
+// TODO: New icon tab

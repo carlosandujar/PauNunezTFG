@@ -2,6 +2,9 @@ import React from "react";
 
 export const langs = {
   ca: {
+    navbar: {
+      items: ["Inici", "Informació", "Models 3D", "Configuració"],
+    },
     home: {
       jumbotron: {
         p1: `Sant Quirze de Pedret és una obra del municipi de Cercs
@@ -15,6 +18,9 @@ export const langs = {
     },
   },
   es: {
+    navbar: {
+      items: ["Inicio", "Información", "Modelos 3D", "Configuración"],
+    },
     home: {
       jumbotron: {
         p1: `Sant Quirze de Pedret es una obra del municipio de Cercs (Bergadá) 
@@ -28,6 +34,9 @@ export const langs = {
     },
   },
   en: {
+    navbar: {
+      items: ["Home", "Information", "3D Models", "Configuration"],
+    },
     home: {
       jumbotron: {
         p1: `Phasellus ut turpis iaculis, lobortis eros nec, elementum lacus. Quisque lobortis id magna vitae semper. Nullam maximus nisl molestie dolor pharetra varius. Donec eu vestibulum leo. Fusce tortor augue, maximus eget aliquet id, pulvinar ut erat. Quisque vel nunc ac tellus luctus auctor at non elit. Curabitur at sem orci`,

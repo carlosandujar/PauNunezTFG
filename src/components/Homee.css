@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Black Chancery";
+  src: url("../assets/fonts/black-chancery/BLKCHCRY.TTF")
+      format("embedded-opentype"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("woff2"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("woff"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("truetype"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("svg");
+}
+
+.home-wrapper {
+  position: relative;
+}
+.home-wrapper #ellipse-top {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  max-height: 65px;
+}
+.home-wrapper #ellipse-bot {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  max-height: 65px;
+}
+.home-wrapper h1 {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Black Chancery";
+  font-size: 3rem;
+  margin: 0 0;
+}
+
+.carousel-wrapper {
+  position: relative;
+  top: 0;
+}
