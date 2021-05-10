@@ -1,0 +1,59 @@
+.info-wrapper {
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  background-color: rgb(15, 15, 15);
+}
+.info-wrapper h1 {
+  margin: 0 0 1rem;
+}
+.info-wrapper p,
+li {
+  font-size: 1.1rem;
+}
+
+.info-text-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+.info-text-wrapper div {
+  padding: 0 1rem;
+}
+.info-text-wrapper ul {
+  list-style-position: inside;
+}
+
+.info-text-wrapper button {
+  color: red;
+}
+
+.info-nav {
+  text-align: left;
+  margin: 0 1rem;
+}
+.info-nav button {
+  color: white;
+  font-size: 1.25rem;
+  background: transparent;
+  border: 1px solid white;
+  padding: 0.5rem 0.75rem;
+}
+.info-nav button:hover {
+  text-shadow: 0px 0px 8px red;
+  box-shadow: 0px 0px 8px 0px rgba(255, 0, 0, 0.5);
+}
+
+.gradient-separator {
+  width: 100%;
+  height: 150px;
+  background: rgb(15, 15, 15);
+  background: linear-gradient(
+    0deg,
+    rgba(15, 15, 15, 0.7) 0%,
+    rgba(15, 15, 15, 1) 100%
+  );
+}
+
+#ReactBackgroundSlider > figure {
+  position: fixed !important;
+}

@@ -9,6 +9,8 @@ import "./App.css";
 // import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Homee from "./components/Homee";
+import Information from "./components/Information";
+import Models from "./components/Models";
 import PointcloudNavigator from "./components/PointcloudNavigator";
 
 function App() {
@@ -46,6 +48,12 @@ function App() {
               <>
                 <NavBar />
                 <Homee />
+                <Information />
+                <Models
+                  bb={BoundingBoxes}
+                  handleBBCheckbox={handleBBCheckbox}
+                  activeBB={activeBB}
+                />
               </>
             </Route>
             <Route path="/PointcloudNavigator">
