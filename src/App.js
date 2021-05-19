@@ -74,3 +74,12 @@ function App() {
 export default App;
 
 // TODO: New icon tab
+// TODO: Provar el model de 100% de resolucio
+// TODO: Info
+// TODO: Translation
+// TODO: Trajectories (+ voiceover)
+// TODO: Fotos
+  // Matriu que multiplicada per (0,0,1) o (0,0,-1)
+  // dona el vector orientacio de la camera 
+  // la posicio ja ve donada al fitxer Bundler
+

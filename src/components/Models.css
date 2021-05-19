@@ -2,19 +2,21 @@
   color: white;
   font-size: 1.5rem;
   border: none;
+  background: transparent;
 }
 .accordion-bb button {
   border: 1px solid white;
   border-radius: 0;
 }
 .accordion-bb input[type="checkbox"] {
-  margin: 0 1rem 0 25%;
+  margin: 0 1rem 0 0;
   transform: scale(2);
+  left: 50%;
 }
 .accordion-bb {
-  max-width: 25%;
-  margin: 0 auto;
-  text-align: left;
+  /* max-width: 25%; */
+  /* margin: 0 auto; */
+  /* text-align: left; */
 }
 .accordion-bb button:hover {
   text-decoration: none;
@@ -25,3 +27,16 @@
   box-shadow: none;
   outline: 0;
 }
+
+.models-wrapper {
+  text-align: center;
+}
+.models-wrapper a {
+  display: inline-block;
+  margin: 0rem auto 1rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.5rem;
+  border: 1px solid white;
+  color: white;
+}
+

@@ -10,7 +10,11 @@ const Models = (props) => {
   return (
     <LangContext.Consumer>
       {([lang, changeLang, l]) => (
-        <section style={{ backgroundColor: "rgba(15,15,15,0.7)" }}>
+        <section
+          className="models-wrapper"
+          id="3d-models"
+          style={{ backgroundColor: "rgba(15,15,15,0.7)" }}
+        >
           <Accordion className="accordion-bb">
             <Card>
               <Card.Header>
@@ -19,12 +23,9 @@ const Models = (props) => {
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <div>
+                <div style={{}}>
                   {props.bb.map((i) => (
-                    <div
-                      key={i.id}
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
+                    <div key={i.id}>
                       <input
                         type="checkbox"
                         name="checkbox"

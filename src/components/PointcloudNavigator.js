@@ -27,7 +27,7 @@ export default class PointcloudNavigator extends React.Component {
 
     this.viewer.setEDLEnabled(false);
     this.viewer.setFOV(60);
-    this.viewer.setPointBudget(750e3);
+    this.viewer.setPointBudget(7500e3);
     // this.viewer.setClipTask(Potree.ClipTask.SHOW_INSIDE);
     this.viewer.loadSettingsFromURL();
 
@@ -59,6 +59,11 @@ export default class PointcloudNavigator extends React.Component {
         // Set the default camera
         scene.view.position.set(...this.props.cameras.defaultCam.pos);
         scene.view.lookAt(...this.props.cameras.defaultCam.target);
+
+        // 10% vs 100% resolution comparison
+        // scene.view.position.set(-5.122, 2.026, 5.249);
+        // scene.view.lookAt(-8.141, -0.247, 9.1);
+
         // Reset cameras if necessary depending on the active BB
         if (this.props.activeBB[0]) {
           scene.view.position.set(...this.props.cameras["0"].pos);
