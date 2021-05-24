@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Information from "./components/Information";
 import Models from "./components/Models";
+import Footer from "./components/Footer";
 import PointCloudViewer from "./components/PointCloudViewer";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
                   handleBBCheckbox={handleBBCheckbox}
                   activeBB={activeBB}
                 />
+                <Footer />
               </>
             </Route>
             <Route path="/PointCloudViewer">

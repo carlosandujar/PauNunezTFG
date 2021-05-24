@@ -13,7 +13,7 @@ import ellipse_bot from "../assets/img/carousel/ellipse_bot.png";
 const Home = (props) => {
   return (
     <section className="home-wrapper" id="home">
-      <img src={ellipse_top} id="ellipse-top" />
+      <img src={ellipse_top} id="ellipse-top" alt="ellipse-top" />
       <h1>Sant Quirze de Pedret</h1>
       <Carousel
         fade
@@ -36,7 +36,7 @@ const Home = (props) => {
           <img className="d-block w-100" src={carousel4} alt="carousel4" />
         </Carousel.Item>
       </Carousel>
-      <img src={ellipse_top} id="ellipse-bot" />
+      <img src={ellipse_top} id="ellipse-bot" alt="ellipse-bot" />
     </section>
   );
 };

@@ -6,8 +6,6 @@ import Button from "react-bootstrap/Button";
 import { LangContext } from "../config/lang-context";
 import "./Models.css";
 
-import logo from "../assets/img/logos/logo.png";
-
 const Models = (props) => {
   return (
     <LangContext.Consumer>

@@ -1,0 +1,36 @@
+.footer-contents {
+  background-color: rgb(15, 15, 15);
+  text-shadow: 0px 0px 4px red;
+  padding: 0 0 0.1rem;
+}
+.footer-contents a {
+  color: inherit;
+}
+.footer-contents a:hover {
+  color: inherit;
+}
+
+#logo-web {
+  margin: 2rem 0rem 1rem;
+}
+
+#donations-profile {
+  image-rendering: -webkit-optimize-contrast;
+  margin: 0.3rem 0rem 0rem;
+  width: 5rem;
+  border-radius: 50px;
+  box-shadow: 0px 0px 7px 0px rgb(255, 0, 0, 0.5);
+}
+
+.organization-logos {
+  margin: 2rem 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.organization-logos img {
+  max-width: 300px;
+}
+.organization-logos a:nth-child(2) {
+  margin: 0 1rem 0 2.5rem;
+}

@@ -26,6 +26,7 @@ const Information = (props) => {
             <div className="info-text-wrapper">
               <div style={{ flex: "15", textAlign: "justify" }}>
                 <p>{lang.info.text}</p>
+                {/* === Historia === */}
                 <h3>{lang.info.sections[0].title}</h3>
                 {lang.info.sections[0].par.map((par, i) => (
                   <p key={i}>{par}</p>
@@ -33,31 +34,37 @@ const Information = (props) => {
               </div>
               <div style={{ flex: "5", textAlign: "left" }}>
                 <ul>
-                  <li>
-                    <b>Localització</b>: Cercs (Berga, Catalunya)
-                  </li>
-                  <li>
-                    <b>Època</b>: S. IX i X
-                  </li>
-                  <li>
-                    <b>Estil</b>: Romànic i preromànic
-                  </li>
-                  <li>
-                    <b>Estat</b>: Restaurada
-                  </li>
-                  <li>
-                    <b>Protecció</b>: Bé Cultural d'Interés Nacional
-                  </li>
-                  <li>
-                    <b>Visitable</b>: Sí, però no lliurement
-                  </li>
+                  {lang.info.list.map((item, i) => (
+                    <li>
+                      <b>{item[0]}</b>
+                      {item[1]}
+                    </li>
+                  ))}
                 </ul>
               </div>
+            </div>
+            <div className="info-text-wrapper-2">
+              {/* === Arquitectura === */}
+              <h3>{lang.info.sections[1].title}</h3>
+              {lang.info.sections[1].par.map((par, i) => (
+                <p key={i}>{par}</p>
+              ))}
+              {/* === Pintures al fresc === */}
+              <h3>{lang.info.sections[2].title}</h3>
+              {lang.info.sections[2].subsections.map((sub, i) => (
+                <>
+                  <h4 key={i}>{sub.title}</h4>
+                  {sub.par.map((par, j) => (
+                    <p key={j}>{par}</p>
+                  ))}
+                </>
+              ))}
             </div>
             <nav className="info-nav">
               <a href={gmapsLink} target="_blank" rel="noopener noreferrer">
                 <button>
-                  <i className="fas fa-map-marker-alt"></i> - Mapa
+                  <i className="fas fa-map-marker-alt"></i> -{" "}
+                  {lang.info.buttons.map}
                 </button>
               </a>
               <a
@@ -67,7 +74,7 @@ const Information = (props) => {
                 rel="noopener noreferrer"
               >
                 <button>
-                  <i className="fas fa-globe"></i> - Web
+                  <i className="fas fa-globe"></i> - {lang.info.buttons.web}
                 </button>
               </a>
               <a
@@ -76,7 +83,8 @@ const Information = (props) => {
                 rel="noopener noreferrer"
               >
                 <button>
-                  <i className="fab fa-wikipedia-w"></i> - Viquipèdia
+                  <i className="fab fa-wikipedia-w"></i> -{" "}
+                  {lang.info.buttons.wiki}
                 </button>
               </a>
             </nav>
