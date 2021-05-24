@@ -1,97 +1,44 @@
-#ReactBackgroundSlider > figure {
-  position: fixed !important;
+@font-face {
+  font-family: "Black Chancery";
+  src: url("../assets/fonts/black-chancery/BLKCHCRY.TTF")
+      format("embedded-opentype"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("woff2"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("woff"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("truetype"),
+    url("../assets/fonts/black-chancery/BLKCHCRY.TTF") format("svg");
 }
 
-.home {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 0rem 0 0;
-  min-height: 1700px;
+.home-wrapper {
+  position: relative;
+}
+.home-wrapper #ellipse-top {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  max-height: 70px;
+}
+.home-wrapper #ellipse-bot {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  max-height: 55px;
+  transform: rotate(180deg);
+}
+.home-wrapper h1 {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Black Chancery";
+  font-size: 3.25rem;
+  margin: 0 0;
+  text-shadow: 0px 0px 8px red;
 }
 
-.home select {
-  margin: 2rem 0rem 1rem 0rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 1.5rem;
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-}
-
-.home a {
-  display: inline-block;
-  margin: 0rem auto 1rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 1.5rem;
-  border: 1px solid white;
-  color: white;
-}
-
-.jumbotron-wrapper {
-  max-width: 50%;
-  margin: 0rem auto 1rem;
-  padding: 2.5rem 2rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.65);
-  box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.65);
-  /* border: 1px solid white; */
-}
 .carousel-wrapper {
-  /* margin: 4rem auto; */
-  box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.65);
-  /* border: 1px solid white; */
-}
-
-.language-button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 0.5rem;
-}
-.language-button {
-  background: rgba(0, 0, 0, 0.65);
-  border: none;
-  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.65);
-}
-.language-button:nth-child(2) {
-  margin: 0rem 0.3rem;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-.accordion-bb * {
-  color: white;
-  font-size: 1.5rem;
-  border: none;
-  background-color: transparent;
-}
-.accordion-bb button {
-  border: 1px solid white;
-  border-radius: 0;
-}
-.accordion-bb input[type="checkbox"] {
-  margin: 0 1rem 0 25%;
-  transform: scale(2);
-}
-.accordion-bb {
-  max-width: 25%;
-  margin: 0 auto;
-  text-align: left;
-}
-.accordion-bb button:hover {
-  text-decoration: none;
-  color: white;
-}
-.accordion-bb button:focus {
-  text-decoration: none;
-  box-shadow: none;
-  outline: 0;
+  position: relative;
+  top: 0;
 }

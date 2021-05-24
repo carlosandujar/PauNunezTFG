@@ -13,11 +13,7 @@
   transform: scale(2);
   left: 50%;
 }
-.accordion-bb {
-  /* max-width: 25%; */
-  /* margin: 0 auto; */
-  /* text-align: left; */
-}
+
 .accordion-bb button:hover {
   text-decoration: none;
   color: white;
@@ -39,4 +35,3 @@
   border: 1px solid white;
   color: white;
 }
-

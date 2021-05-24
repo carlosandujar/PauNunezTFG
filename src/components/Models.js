@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import { LangContext } from "../config/lang-context";
 import "./Models.css";
 
+import logo from "../assets/img/logos/logo.png";
+
 const Models = (props) => {
   return (
     <LangContext.Consumer>
@@ -43,7 +45,7 @@ const Models = (props) => {
             </Card>
           </Accordion>
           <br></br>
-          <Link to="/pointcloudnavigator">Explorar en 3D</Link>
+          <Link to="/PointCloudViewer">Explorar en 3D</Link>
         </section>
       )}
     </LangContext.Consumer>

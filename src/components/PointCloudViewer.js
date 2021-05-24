@@ -5,7 +5,7 @@ const Potree = window.Potree;
 const THREE = window.THREE;
 const TWEEN = window.TWEEN;
 
-export default class PointcloudNavigator extends React.Component {
+export default class PointCloudViewer extends React.Component {
   constructor(props) {
     super(props);
     this.potreeContainerDiv = React.createRef();
@@ -42,7 +42,7 @@ export default class PointcloudNavigator extends React.Component {
     });
 
     // Load and add point cloud to scene
-    let url = `./pointclouds/pedret/model_10_100/metadata.json`;
+    let url = `./pointclouds/pedret/model_100_100/metadata.json`;
     Potree.loadPointCloud(url).then(
       (e) => {
         let scene = this.viewer.scene;

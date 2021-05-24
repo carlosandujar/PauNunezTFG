@@ -8,10 +8,10 @@ import BoundingBoxes, {
 import "./App.css";
 // import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import Homee from "./components/Homee";
+import Home from "./components/Home";
 import Information from "./components/Information";
 import Models from "./components/Models";
-import PointcloudNavigator from "./components/PointcloudNavigator";
+import PointCloudViewer from "./components/PointCloudViewer";
 
 function App() {
   const [lang, changeLang] = useState(
@@ -40,14 +40,9 @@ function App() {
         <Router basename="/">
           <Switch>
             <Route exact path="/">
-              {/* <Home
-                bb={BoundingBoxes}
-                handleBBCheckbox={handleBBCheckbox}
-                activeBB={activeBB}
-              /> */}
               <>
                 <NavBar />
-                <Homee />
+                <Home />
                 <Information />
                 <Models
                   bb={BoundingBoxes}
@@ -56,8 +51,8 @@ function App() {
                 />
               </>
             </Route>
-            <Route path="/PointcloudNavigator">
-              <PointcloudNavigator
+            <Route path="/PointCloudViewer">
+              <PointCloudViewer
                 bb={BoundingBoxes}
                 activeBB={activeBB}
                 cleanUpBB={CleanUpBoundingBoxes}
@@ -73,13 +68,10 @@ function App() {
 
 export default App;
 
-// TODO: New icon tab
-// TODO: Provar el model de 100% de resolucio
 // TODO: Info
 // TODO: Translation
 // TODO: Trajectories (+ voiceover)
 // TODO: Fotos
-  // Matriu que multiplicada per (0,0,1) o (0,0,-1)
-  // dona el vector orientacio de la camera 
-  // la posicio ja ve donada al fitxer Bundler
-
+// Matriu que multiplicada per (0,0,1) o (0,0,-1)
+// dona el vector orientacio de la camera
+// la posicio ja ve donada al fitxer Bundler
