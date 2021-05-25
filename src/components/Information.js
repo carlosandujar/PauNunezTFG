@@ -53,7 +53,9 @@ const Information = (props) => {
               <h3>{lang.info.sections[2].title}</h3>
               {lang.info.sections[2].subsections.map((sub, i) => (
                 <>
-                  <h4 key={i}>{sub.title}</h4>
+                  <h4 key={i} className="info-text-wrapper-2-h4">
+                    {sub.title}
+                  </h4>
                   {sub.par.map((par, j) => (
                     <p key={j}>{par}</p>
                   ))}
@@ -62,7 +64,7 @@ const Information = (props) => {
             </div>
             <nav className="info-nav">
               <a href={gmapsLink} target="_blank" rel="noopener noreferrer">
-                <button>
+                <button className="info-nav-button">
                   <i className="fas fa-map-marker-alt"></i> -{" "}
                   {lang.info.buttons.map}
                 </button>
@@ -73,7 +75,7 @@ const Information = (props) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button>
+                <button className="info-nav-button">
                   <i className="fas fa-globe"></i> - {lang.info.buttons.web}
                 </button>
               </a>
@@ -82,7 +84,7 @@ const Information = (props) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button>
+                <button className="info-nav-button">
                   <i className="fab fa-wikipedia-w"></i> -{" "}
                   {lang.info.buttons.wiki}
                 </button>

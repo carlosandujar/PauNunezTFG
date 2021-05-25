@@ -36,6 +36,16 @@ const NavBar = (props) => {
             </Scroll.Link>
           </nav>
           <div className="language-button-wrapper">
+            <i
+              className={`fas ${props.theme ? "fa-moon" : "fa-sun"}`}
+              style={{
+                marginRight: "1rem",
+                fontSize: "16pt",
+                cursor: "pointer",
+                color: `${props.theme ? "black" : "white"}`,
+              }}
+              onClick={props.changeTheme}
+            ></i>
             <button
               className="language-button"
               onClick={() => {

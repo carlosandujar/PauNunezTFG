@@ -10,11 +10,7 @@ const Models = (props) => {
   return (
     <LangContext.Consumer>
       {([lang, changeLang, l]) => (
-        <section
-          className="models-wrapper"
-          id="3d-models"
-          style={{ backgroundColor: "rgba(15,15,15,0.7)" }}
-        >
+        <section className="models-wrapper" id="3d-models">
           <Accordion className="accordion-bb">
             <Card>
               <Card.Header>
