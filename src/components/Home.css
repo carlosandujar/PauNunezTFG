@@ -10,6 +10,7 @@
 
 .home-wrapper {
   position: relative;
+  transition: 0.25s 0s all linear;
 }
 .home-wrapper #ellipse-top {
   position: absolute;
@@ -17,6 +18,17 @@
   z-index: 2;
   width: 100%;
   max-height: 70px;
+  opacity: 1;
+  transition: 0.25s 0s opacity linear;
+}
+.home-wrapper #ellipse-top-white {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  max-height: 70px;
+  opacity: 0;
+  transition: 0.25s 0s opacity linear;
 }
 .home-wrapper #ellipse-bot {
   position: absolute;
@@ -25,6 +37,18 @@
   width: 100%;
   max-height: 55px;
   transform: rotate(180deg);
+  opacity: 1;
+  transition: 0.25s 0s opacity linear;
+}
+.home-wrapper #ellipse-bot-white {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  max-height: 55px;
+  transform: rotate(180deg);
+  opacity: 0;
+  transition: 0.25s 0s opacity linear;
 }
 .home-wrapper h1 {
   position: absolute;
@@ -36,6 +60,7 @@
   font-size: 3.25rem;
   margin: 0 0;
   text-shadow: 0px 0px 8px red;
+  transition: 0.25s 0s all linear;
 }
 
 .carousel-wrapper {

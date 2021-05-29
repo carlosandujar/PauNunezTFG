@@ -1,5 +1,11 @@
 import React from "react";
 
+import BoundingBoxes, {
+  ViewType,
+  Cameras,
+  CleanUpBoundingBoxes,
+} from "../config/viewer-variables";
+
 // import vanillaJS Potree libs, /!\ would be best with proper ES6 import
 const Potree = window.Potree;
 const THREE = window.THREE;
@@ -27,8 +33,7 @@ export default class PointCloudViewer extends React.Component {
 
     this.viewer.setEDLEnabled(false);
     this.viewer.setFOV(60);
-    this.viewer.setPointBudget(7500e3);
-    // this.viewer.setClipTask(Potree.ClipTask.SHOW_INSIDE);
+    this.viewer.setPointBudget(750e3);
     this.viewer.loadSettingsFromURL();
 
     // this.viewer.setControls(this.viewer.earthControls);
@@ -57,32 +62,32 @@ export default class PointCloudViewer extends React.Component {
         scene.addPointCloud(pointcloud);
 
         // Set the default camera
-        scene.view.position.set(...this.props.cameras.defaultCam.pos);
-        scene.view.lookAt(...this.props.cameras.defaultCam.target);
-
-        // 10% vs 100% resolution comparison
-        // scene.view.position.set(-5.122, 2.026, 5.249);
-        // scene.view.lookAt(-8.141, -0.247, 9.1);
+        scene.view.position.set(...Cameras.defaultCam.pos);
+        scene.view.lookAt(...Cameras.defaultCam.target);
 
         // Reset cameras if necessary depending on the active BB
-        if (this.props.activeBB[0]) {
-          scene.view.position.set(...this.props.cameras["0"].pos);
-          scene.view.lookAt(...this.props.cameras["0"].target);
+        // Reset camera for PLANT view
+        if (this.props.viewType === ViewType.PLANT) {
+          scene.view.position.set(...Cameras["0"].pos);
+          scene.view.lookAt(...Cameras["0"].target);
         }
 
-        // If there is not any BB active, use cleanUp BB to clean basement
-        const anyBB = this.props.activeBB.reduce((acc, curr) => acc || curr);
-        if (!anyBB || this.props.activeBB[0]) {
+        // Clean noise under the monument with CleanUpBoundingBoxes
+        // Only for FULL and PLANT views
+        if (
+          this.props.viewType === ViewType.FULL ||
+          this.props.viewType === ViewType.PLANT
+        ) {
           const volume0 = new Potree.BoxVolume();
           const volume1 = new Potree.BoxVolume();
-          volume0.name = this.props.cleanUpBB[0].name;
-          volume1.name = this.props.cleanUpBB[1].name;
-          volume0.position.set(...this.props.cleanUpBB[0].pos);
-          volume1.position.set(...this.props.cleanUpBB[1].pos);
-          volume0.scale.set(...this.props.cleanUpBB[0].siz);
-          volume1.scale.set(...this.props.cleanUpBB[1].siz);
-          volume0.rotation.set(...this.props.cleanUpBB[0].rot);
-          volume1.rotation.set(...this.props.cleanUpBB[1].rot);
+          volume0.name = CleanUpBoundingBoxes[0].name;
+          volume1.name = CleanUpBoundingBoxes[1].name;
+          volume0.position.set(...CleanUpBoundingBoxes[0].pos);
+          volume1.position.set(...CleanUpBoundingBoxes[1].pos);
+          volume0.scale.set(...CleanUpBoundingBoxes[0].siz);
+          volume1.scale.set(...CleanUpBoundingBoxes[1].siz);
+          volume0.rotation.set(...CleanUpBoundingBoxes[0].rot);
+          volume1.rotation.set(...CleanUpBoundingBoxes[1].rot);
           volume0.clip = true;
           volume1.clip = true;
           volume0.visible = false;
@@ -91,25 +96,36 @@ export default class PointCloudViewer extends React.Component {
           scene.addVolume(volume1);
         }
 
-        // Set Bounding (clipping) Boxes
-        for (let i = 0; i < this.props.bb.length; i++) {
-          if (this.props.activeBB[i]) {
-            let volume = new Potree.BoxVolume();
-            volume.name = this.props.bb[i].name;
-            volume.position.set(...this.props.bb[i].pos);
-            volume.scale.set(...this.props.bb[i].siz);
-            volume.rotation.set(...this.props.bb[i].rot);
-            volume.clip = true;
-            volume.visible = false;
-            scene.addVolume(volume);
-            if (i === 0) break;
+        // Set Bounding Boxes
+        if (this.props.viewType === ViewType.PLANT) {
+          let volume = new Potree.BoxVolume();
+          volume.name = BoundingBoxes[0].name;
+          volume.position.set(...BoundingBoxes[0].pos);
+          volume.scale.set(...BoundingBoxes[0].siz);
+          volume.rotation.set(...BoundingBoxes[0].rot);
+          volume.clip = true;
+          volume.visible = false;
+          scene.addVolume(volume);
+        } else if (this.props.viewType === ViewType.SELECTION) {
+          for (let i = 1; i < BoundingBoxes.length; i++) {
+            if (this.props.activeBB[i]) {
+              let volume = new Potree.BoxVolume();
+              volume.name = BoundingBoxes[i].name;
+              volume.position.set(...BoundingBoxes[i].pos);
+              volume.scale.set(...BoundingBoxes[i].siz);
+              volume.rotation.set(...BoundingBoxes[i].rot);
+              volume.clip = true;
+              volume.visible = false;
+              scene.addVolume(volume);
+            }
           }
         }
-        // If bb0 (no roof) set to clip outside, else clip inside
+
+        // Set clipping area for Bounding Boxes
+        // FULL || PLANT -> OUTSIDE, SELECTION -> INSIDE
         this.viewer.setClipTask(
-          this.props.activeBB[0]
-            ? Potree.ClipTask.SHOW_OUTSIDE
-            : !anyBB
+          this.props.viewType === ViewType.FULL ||
+            this.props.viewType === ViewType.PLANT
             ? Potree.ClipTask.SHOW_OUTSIDE
             : Potree.ClipTask.SHOW_INSIDE
         );

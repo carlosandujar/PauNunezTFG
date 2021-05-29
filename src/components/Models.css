@@ -1,38 +1,59 @@
-.accordion-bb * {
-  color: white;
-  font-size: 1.5rem;
-  border: none;
-  background: transparent;
-}
-.accordion-bb button {
-  border: 1px solid white;
-  border-radius: 0;
-}
-.accordion-bb input[type="checkbox"] {
-  margin: 0 1rem 0 0;
-  transform: scale(2);
-  left: 50%;
-}
-
-.accordion-bb button:hover {
-  text-decoration: none;
-  color: white;
-}
-.accordion-bb button:focus {
-  text-decoration: none;
-  box-shadow: none;
-  outline: 0;
-}
-
 .models-wrapper {
   text-align: center;
+  padding: 0rem 2rem 3.5rem;
   background-color: rgba(15, 15, 15, 0.75);
+  transition: 0.25s 0s all linear;
+}
+.models-wrapper h1 {
+  margin: 0 0 3rem;
 }
 .models-wrapper a {
-  display: inline-block;
-  margin: 0rem auto 1rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 1.5rem;
+  text-decoration: none;
+  height: 30%;
+}
+
+.models-button {
+  box-sizing: border-box;
   border: 1px solid white;
+  width: 100%;
+  min-height: 100%;
+  font-size: 1.5rem;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: rgba(15, 15, 15, 0.75);
+}
+.models-button:hover {
+  text-shadow: 0px 0px 10px red;
+  box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.5);
+}
+.models-button i {
+  margin-right: 1rem;
+  font-size: 2.5rem;
+}
+
+#models-plant-map {
+  background-color: rgba(15, 15, 15, 0.75);
+  box-shadow: 0px 0px 2rem 2rem rgba(15, 15, 15, 0.75);
+  margin: 0 5%;
+  border-radius: 30%;
+}
+
+.models-checkboxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  font-size: 1.65rem;
+  /* background-color: rgba(15, 15, 15, 0.75); */
+  /* box-shadow: 0px 0px 3px 3px rgba(15, 15, 15, 0.75); */
+  /* border: 1px solid white; */
+}
+.models-checkboxes span {
+  padding: 8px 1rem;
+  cursor: pointer;
+  background-color: rgba(15, 15, 15, 0.75);
+  border: 1px solid white;
 }

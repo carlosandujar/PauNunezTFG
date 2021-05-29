@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { LangContext, langs } from "./config/lang-context";
-import BoundingBoxes, {
-  CleanUpBoundingBoxes,
-  Cameras,
-} from "./config/viewer-variables";
+import BoundingBoxes from "./config/viewer-variables";
 import "./App.css";
 // import Home from "./components/Home";
 import NavBar from "./components/NavBar";
@@ -20,8 +17,9 @@ function App() {
   );
   const [theme, setTheme] = useState(false); // 0 = dark, 1 = light
   const [activeBB, setActiveBB] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+  const [viewType, setViewType] = useState(null); // 0 = FULL, 1 = PLANT, 2 = SELECTION
 
-  const handleBBCheckbox = (e, i) => {
+  const activateBB = (i) => {
     let arr = [...activeBB];
     arr[i] = !arr[i];
     setActiveBB(arr);
@@ -32,6 +30,10 @@ function App() {
     const navbar_link = document.getElementsByClassName("navbar-link");
 
     const title_home = document.getElementById("title-home");
+    const ellipse_top = document.getElementById("ellipse-top");
+    const ellipse_bot = document.getElementById("ellipse-bot");
+    const ellipse_top_white = document.getElementById("ellipse-top-white");
+    const ellipse_bot_white = document.getElementById("ellipse-bot-white");
 
     const info_wrapper = document.getElementById("information");
     const info_wrapper_h4 = document.getElementsByClassName(
@@ -43,6 +45,9 @@ function App() {
       document.getElementsByClassName("gradient-separator");
 
     const models_wrapper = document.getElementById("3d-models");
+    const models_button = document.getElementsByClassName("models-button");
+    const model_map = document.getElementById("models-plant-map");
+    const room_list = document.getElementsByClassName("models-room-list");
 
     const footer_contents =
       document.getElementsByClassName("footer-contents")[0];
@@ -59,6 +64,10 @@ function App() {
       const title_home = document.getElementById("title-home");
       title_home.style.color = "black";
       title_home.style.textShadow = "0px 0px 3px red";
+      ellipse_top.style.opacity = "0";
+      ellipse_bot.style.opacity = "0";
+      ellipse_top_white.style.opacity = "1";
+      ellipse_bot_white.style.opacity = "1";
       // === Information ===
       info_wrapper.style.color = "black";
       info_wrapper.style.backgroundColor = "white";
@@ -77,6 +86,20 @@ function App() {
       }
       // === Models ===
       models_wrapper.style.backgroundColor = "rgba(255, 255, 255, 0.75)";
+      models_wrapper.style.color = "black";
+      for (let button of models_button) {
+        button.style.color = "black";
+        button.style.border = "1px solid black";
+        button.style.backgroundColor = "rgba(255, 255, 255, 0.75)";
+      }
+      model_map.style.backgroundColor = "rgba(255, 255, 255, 0.75)";
+      model_map.style.boxShadow = "0px 0px 2rem 2rem rgba(255, 255, 255, 0.75)";
+      for (let room of room_list) {
+        room.style.color = "black";
+        room.style.border = "1px solid black";
+        room.style.backgroundColor = "rgba(255, 255, 255, 0.75)";
+      }
+
       // === Configuration ===
       // === Footer ===
       footer_contents.style.backgroundColor = "white";
@@ -94,6 +117,10 @@ function App() {
       // === Home ===
       title_home.style.color = "white";
       title_home.style.textShadow = "0px 0px 8px red";
+      ellipse_top.style.opacity = "1";
+      ellipse_bot.style.opacity = "1";
+      ellipse_top_white.style.opacity = "0";
+      ellipse_bot_white.style.opacity = "0";
       // === Information ===
       info_wrapper.style.color = "white";
       info_wrapper.style.backgroundColor = "rgb(15, 15, 15)";
@@ -112,6 +139,19 @@ function App() {
       }
       // === Models ===
       models_wrapper.style.backgroundColor = "rgba(15, 15, 15, 0.75)";
+      models_wrapper.style.color = "white";
+      for (let button of models_button) {
+        button.style.color = "white";
+        button.style.border = "1px solid white";
+        button.style.backgroundColor = "rgba(15, 15, 15, 0.75)";
+      }
+      model_map.style.backgroundColor = "rgba(15, 15, 15, 0.75)";
+      model_map.style.boxShadow = "0px 0px 2rem 2rem rgba(15, 15, 15, 0.75)";
+      for (let room of room_list) {
+        room.style.color = "white";
+        room.style.border = "1px solid white";
+        room.style.backgroundColor = "rgba(15, 15, 15, 0.75)";
+      }
       // === Configuration ===
       // === Footer ===
       footer_contents.style.backgroundColor = "rgb(15, 15, 15)";
@@ -144,20 +184,17 @@ function App() {
                 <Home theme={theme} />
                 <Information />
                 <Models
+                  theme={theme}
                   bb={BoundingBoxes}
-                  handleBBCheckbox={handleBBCheckbox}
                   activeBB={activeBB}
+                  activateBB={activateBB}
+                  setViewType={(vt) => setViewType(vt)}
                 />
                 <Footer />
               </>
             </Route>
             <Route path="/PointCloudViewer">
-              <PointCloudViewer
-                bb={BoundingBoxes}
-                activeBB={activeBB}
-                cleanUpBB={CleanUpBoundingBoxes}
-                cameras={Cameras}
-              />
+              <PointCloudViewer activeBB={activeBB} viewType={viewType} />
             </Route>
           </Switch>
         </Router>
@@ -168,8 +205,8 @@ function App() {
 
 export default App;
 
-// TODO: Info
-// TODO: Translation
+////  Info
+//// Translation
 // TODO: Trajectories (+ voiceover)
 // TODO: Fotos
 // Matriu que multiplicada per (0,0,1) o (0,0,-1)

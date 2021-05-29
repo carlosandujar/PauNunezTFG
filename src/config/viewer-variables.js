@@ -1,7 +1,13 @@
+const ViewType = Object.freeze({
+  FULL: 0,
+  PLANT: 1,
+  SELECTION: 2,
+});
+
 const BoundingBoxes = [
   {
     id: 0,
-    name: "Sense teulada",
+    name: "Planta",
     pos: [-0.093, 0.127, 9.381],
     rot: [0.0, 0.0, 0.436],
     siz: [14.783, 11.831, 6.224],
@@ -71,8 +77,8 @@ const Cameras = {
     target: [-2.27, 2.393, 3.923],
   },
   0: {
-    pos: [11.924, 5.126, 17.341],
-    target: [-0.207, -0.343, 3.366],
+    pos: [10.441, 4.136, 16.38],
+    target: [-0.634, -0.717, 3.914],
   },
 };
 
@@ -96,5 +102,6 @@ const CleanUpBoundingBoxes = [
 ];
 
 export default BoundingBoxes;
+export { ViewType };
 export { Cameras };
 export { CleanUpBoundingBoxes };

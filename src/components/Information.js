@@ -35,7 +35,7 @@ const Information = (props) => {
               <div style={{ flex: "5", textAlign: "left" }}>
                 <ul>
                   {lang.info.list.map((item, i) => (
-                    <li>
+                    <li key={i}>
                       <b>{item[0]}</b>
                       {item[1]}
                     </li>
@@ -63,32 +63,58 @@ const Information = (props) => {
               ))}
             </div>
             <nav className="info-nav">
-              <a href={gmapsLink} target="_blank" rel="noopener noreferrer">
-                <button className="info-nav-button">
-                  <i className="fas fa-map-marker-alt"></i> -{" "}
-                  {lang.info.buttons.map}
-                </button>
-              </a>
-              <a
-                style={{ margin: "0 1rem" }}
-                href={turismeBergaLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="info-nav-button">
-                  <i className="fas fa-globe"></i> - {lang.info.buttons.web}
-                </button>
-              </a>
-              <a
-                href={l === "es" ? wikiLink_es : wikiLink_ca}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="info-nav-button">
-                  <i className="fab fa-wikipedia-w"></i> -{" "}
-                  {lang.info.buttons.wiki}
-                </button>
-              </a>
+              <div>
+                <a href={gmapsLink} target="_blank" rel="noopener noreferrer">
+                  <button className="info-nav-button">
+                    <i className="fas fa-map-marker-alt"></i> -{" "}
+                    {lang.info.buttons.map}
+                  </button>
+                </a>
+                <a
+                  style={{ margin: "0 1rem" }}
+                  href={turismeBergaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="info-nav-button">
+                    <i className="fas fa-globe"></i> - {lang.info.buttons.web}
+                  </button>
+                </a>
+                <a
+                  href={l === "es" ? wikiLink_es : wikiLink_ca}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="info-nav-button">
+                    <i className="fab fa-wikipedia-w"></i> -{" "}
+                    {lang.info.buttons.wiki}
+                  </button>
+                </a>
+              </div>
+              <div>
+                {`${lang.info.sources} `}
+                <a
+                  href="https://www.catalunyamedieval.es/esglesia-de-sant-quirze-de-pedret-cercs-bergueda/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {`1, `}
+                </a>
+                <a
+                  href="https://www.elturistatranquil.com/ca/esglesia-de-sant-quirze-de-pedret/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {`2, `}
+                </a>
+                <a
+                  href="https://ca.wikipedia.org/wiki/Sant_Quirze_de_Pedret"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  3
+                </a>
+              </div>
             </nav>
           </section>
           <div className="gradient-separator"></div>

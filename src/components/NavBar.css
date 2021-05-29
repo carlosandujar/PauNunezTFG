@@ -9,6 +9,7 @@
   top: 0;
   z-index: 3;
   background-color: rgb(15, 15, 15);
+  transition: 0.25s 0s all linear;
 }
 
 .navbar-link {

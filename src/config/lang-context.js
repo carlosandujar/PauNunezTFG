@@ -3,7 +3,7 @@ import React from "react";
 export const langs = {
   ca: {
     navbar: {
-      items: ["Inici", "Informació", "Models 3D", "Configuració"],
+      items: ["Inici", "Informació", "Model 3D", "Configuració"],
     },
     info: {
       title: "Informació",
@@ -90,6 +90,20 @@ export const langs = {
         web: "Web",
         wiki: "Viquipèdia",
       },
+      sources: "Fonts consultades:",
+    },
+    models: {
+      title: "Model 3D",
+      buttons: ["Model complet", "Vista en planta", "Veure selecció"],
+      checkboxes: [
+        "A - Entrada",
+        "B - Nau principal",
+        "C - Nau lateral",
+        "D - Absis",
+        "E - Absidiola nord",
+        "F - Absidiola sud",
+        "G - Avanstala",
+      ],
     },
     footer: {
       title: "Exploració Interactiva de Models de Patrimoni Cultural",
@@ -98,7 +112,7 @@ export const langs = {
   },
   es: {
     navbar: {
-      items: ["Inicio", "Información", "Modelos 3D", "Configuración"],
+      items: ["Inicio", "Información", "Modelo 3D", "Configuración"],
     },
     info: {
       title: "Información",
@@ -184,6 +198,20 @@ export const langs = {
         web: "Web",
         wiki: "Wikipedia",
       },
+      sources: "Fuentes consultadas:",
+    },
+    models: {
+      title: "Modelo 3D",
+      buttons: ["Modelo completo", "Vista en planta", "Ver selección"],
+      checkboxes: [
+        "A - Entrada",
+        "B - Nave principal",
+        "C - Nave lateral",
+        "D - Ábside",
+        "E - Absidiolo norte",
+        "F - Absidiolo sur",
+        "G - Antesala",
+      ],
     },
     footer: {
       title: "Exploración Interactiva de Modelos de Patrimonio Cultural",
@@ -192,7 +220,7 @@ export const langs = {
   },
   en: {
     navbar: {
-      items: ["Home", "Information", "3D Models", "Configuration"],
+      items: ["Home", "Information", "3D Model", "Configuration"],
     },
     info: {
       title: "Information",
@@ -278,6 +306,20 @@ export const langs = {
         web: "Web",
         wiki: "Wikipedia (cat)",
       },
+      sources: "Consulted sources:",
+    },
+    models: {
+      title: "3D Model",
+      buttons: ["Full model", "Floor plan view ", "Display selection"],
+      checkboxes: [
+        "A - Entrance",
+        "B - Principal Nave",
+        "C - Lateral Nave",
+        "D - Apse",
+        "E - Northern apsidiole",
+        "F - Southern apsidiole",
+        "G - Antechamber",
+      ],
     },
     footer: {
       title: "Interactive Exploration of Cultural Heritage Models",

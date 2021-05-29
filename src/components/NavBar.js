@@ -24,7 +24,12 @@ const NavBar = (props) => {
             <Scroll.Link to="information" smooth={true} className="navbar-link">
               {lang.navbar.items[1]}
             </Scroll.Link>
-            <Scroll.Link to="3d-models" smooth={true} className="navbar-link">
+            <Scroll.Link
+              to="3d-models"
+              smooth={true}
+              offset={-50}
+              className="navbar-link"
+            >
               {lang.navbar.items[2]}
             </Scroll.Link>
             <Scroll.Link
