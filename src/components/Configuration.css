@@ -1,0 +1,53 @@
+.configuration-wrapper {
+  text-align: center;
+  padding: 3.5rem 2rem 0rem;
+  background-color: rgba(15, 15, 15, 0.75);
+  transition: 0.25s 0s all linear;
+}
+.configuration-wrapper h1 {
+  margin: 0 0 3rem;
+}
+.configuration-wrapper h3 {
+  margin: 0 0 3rem;
+}
+
+.navigation-item {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+.navigation-item div {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+}
+.navigation-item div h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+}
+.navigation-item div p {
+  margin: 0;
+}
+.navigation-item img {
+  padding: 1rem 0rem;
+  background-color: rgba(15, 15, 15, 0.75);
+  box-shadow: 0px 0px 2rem 2rem rgba(15, 15, 15, 0.75);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* =======================================  */
+
+.custom-range::-webkit-slider-thumb {
+  background: rgba(255, 0, 0, 1);
+}
+
+.custom-range::-moz-range-thumb {
+  background: rgba(255, 0, 0, 1);
+}
+
+.custom-range::-ms-thumb {
+  background: rgba(255, 0, 0, 1);
+}

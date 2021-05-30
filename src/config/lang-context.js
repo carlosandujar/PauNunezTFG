@@ -105,6 +105,50 @@ export const langs = {
         "G - Avanstala",
       ],
     },
+    configuration: {
+      title: "Configuració",
+      sections: [
+        {
+          title: "Navegació",
+          firstPerson: {
+            title: "Primera persona",
+            text: [
+              "WASD/Fletxes: Desplaçament",
+              "Ratolí 1: Direcció del desplaçament",
+              "Ratolí 2: Desplaçament del model",
+              "Rodeta: Modificació de la velocitat",
+            ],
+          },
+          orbital: {
+            title: "Orbital",
+            text: [
+              "Ratolí 1: Rotació del model",
+              "Ratolí 2: Desplaçament del model",
+              "Rodeta: Ajustament del zoom",
+              "Doble clic: Zoom",
+            ],
+          },
+        },
+        {
+          title: "Aparença",
+          specs: {
+            title: "Especificacions detectades",
+            plataforma: "Plataforma",
+            plataformaValue: ["Mòbil", "PC"],
+            gpu: "Targeta gràfica",
+            categoria: "Categoria",
+            categoriaValue: ["Baixa", "Mitjana", "Alta"],
+          },
+          pointBudget: {
+            title: "Nombre de punts màxim",
+            description: [
+              `Especifica el nombre de punts màxims que poden ser renderitzats (actius) en tot moment.`,
+              `Com més alt sigui el nombre, més potència gràfica es requereix. Disminueix el valor si tens problemes de rendiment.`,
+            ],
+          },
+        },
+      ],
+    },
     footer: {
       title: "Exploració Interactiva de Models de Patrimoni Cultural",
       author: "Treball de Fi de Grau de Pau Núñez Amorós",
@@ -213,6 +257,50 @@ export const langs = {
         "G - Antesala",
       ],
     },
+    configuration: {
+      title: "Configuración",
+      sections: [
+        {
+          title: "Navegación",
+          firstPerson: {
+            title: "Primera persona",
+            text: [
+              "WASD/Flechas: Desplazamiento",
+              "Ratón 1: Dirección del desplazamiento",
+              "Ratón 2: Desplazamiento del modelo",
+              "Rodeta: Modificación de la velocidad",
+            ],
+          },
+          orbital: {
+            title: "Orbital",
+            text: [
+              "Ratón 1: Rotación del modelo",
+              "Ratón 2: Desplazamiento del modelo",
+              "Rueda: Ajuste del zoom",
+              "Doble clic: Zoom",
+            ],
+          },
+        },
+        {
+          title: "Apariencia",
+          specs: {
+            title: "Especificaciones detectadas",
+            plataforma: "Plataforma",
+            plataformaValue: ["Móvil", "PC"],
+            gpu: "Tarjeta gráfica",
+            categoria: "Categoría",
+            categoriaValue: ["Baja", "Media", "Alta"],
+          },
+          pointBudget: {
+            title: "Número máximo de puntos",
+            description: [
+              `Especifica el número de puntos máximos que pueden ser renderizados (activos) en todo momento.`,
+              `Cuanto más alto sea el número, más potencia gráfica se requiere. Disminuye el valor si tienes problemas de rendimento.`,
+            ],
+          },
+        },
+      ],
+    },
     footer: {
       title: "Exploración Interactiva de Modelos de Patrimonio Cultural",
       author: "Trabajo de Fin de Grado de Pau Núñez Amorós",
@@ -319,6 +407,50 @@ export const langs = {
         "E - Northern apsidiole",
         "F - Southern apsidiole",
         "G - Antechamber",
+      ],
+    },
+    configuration: {
+      title: "Configuration",
+      sections: [
+        {
+          title: "Navigation",
+          firstPerson: {
+            title: "First person",
+            text: [
+              "WASD/Arrows: Movement",
+              "Mouse 1: Direction of movement",
+              "Mouse 2: Model displacement",
+              "Rodeta: Speed adjustment",
+            ],
+          },
+          orbital: {
+            title: "Orbital",
+            text: [
+              "Mouse 1: Model rotation",
+              "Mouse 2: Model displacement",
+              "Wheel: Zoom adjustment",
+              "Double click: Zoom",
+            ],
+          },
+        },
+        {
+          title: "Appearance",
+          specs: {
+            title: "Detected specificactions",
+            plataforma: "Platform",
+            plataformaValue: ["Mobile", "PC"],
+            gpu: "Graphics card",
+            categoria: "Category",
+            categoriaValue: ["Low", "Medium", "High"],
+          },
+          pointBudget: {
+            title: "Point budget",
+            description: [
+              `Specify the maximum number of rendered points at any given time.`,
+              `The higher this value, the more computing power needed. Reduce it if performance is not optimal.`,
+            ],
+          },
+        },
       ],
     },
     footer: {

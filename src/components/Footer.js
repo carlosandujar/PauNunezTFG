@@ -14,8 +14,19 @@ const Footer = (props) => {
       {([lang, changeLang, l]) => (
         <section className="footer-wrapper" id="footer">
           <div
-            style={{ transform: "rotate(180deg)" }}
-            className="gradient-separator"
+            className="gradient-separator-2"
+            style={{
+              background: `rgb(${
+                !props.theme ? "15, 15, 15" : "255, 255, 255"
+              })`,
+              background: `linear-gradient(180deg, 
+                rgba(${
+                  !props.theme ? "15, 15, 15" : "255, 255, 255"
+                }, 0.75) 0%, 
+                rgba(${
+                  !props.theme ? "15, 15, 15" : "255, 255, 255"
+                }, 1) 100%)`,
+            }}
           ></div>
           <div className="footer-contents">
             <div

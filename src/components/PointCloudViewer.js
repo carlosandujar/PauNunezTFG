@@ -33,17 +33,17 @@ export default class PointCloudViewer extends React.Component {
 
     this.viewer.setEDLEnabled(false);
     this.viewer.setFOV(60);
-    this.viewer.setPointBudget(750e3);
+    this.viewer.setPointBudget(this.props.viewConfig.pointBudget || 1e6);
     this.viewer.loadSettingsFromURL();
 
-    // this.viewer.setControls(this.viewer.earthControls);
+    // this.viewer.showPanel(0);
 
     this.viewer.loadGUI(() => {
       this.viewer.setLanguage("en");
-      // window.$("#menu_appearance").next().show();
-      // window.$("#menu_tools").next().show();
-      // window.$("#menu_clipping").next().show();
-      // this.viewer.toggleSidebar();
+      window.$("#menu_appearance").next().show();
+      window.$("#menu_tools").next().show();
+      window.$("#menu_clipping").next().show();
+      this.viewer.toggleSidebar();
     });
 
     // Load and add point cloud to scene
@@ -61,15 +61,25 @@ export default class PointCloudViewer extends React.Component {
 
         scene.addPointCloud(pointcloud);
 
+        // Set navigation controls and movement speed
+        this.viewer.setControls(
+          this.props.viewConfig.controls
+            ? this.viewer.orbitControls
+            : this.viewer.fpControls
+        );
+        this.viewer.setMoveSpeed(5);
+
         // Set the default camera
-        scene.view.position.set(...Cameras.defaultCam.pos);
-        scene.view.lookAt(...Cameras.defaultCam.target);
+        scene.view.setView(
+          Cameras.defaultCam.pos,
+          Cameras.defaultCam.target,
+          2000
+        );
 
         // Reset cameras if necessary depending on the active BB
         // Reset camera for PLANT view
         if (this.props.viewType === ViewType.PLANT) {
-          scene.view.position.set(...Cameras["0"].pos);
-          scene.view.lookAt(...Cameras["0"].target);
+          scene.view.setView(Cameras["0"].pos, Cameras["0"].target, 2000);
         }
 
         // Clean noise under the monument with CleanUpBoundingBoxes

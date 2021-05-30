@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { getGPUTier } from "detect-gpu";
+
 import { LangContext, langs } from "./config/lang-context";
 import BoundingBoxes from "./config/viewer-variables";
+
 import "./App.css";
-// import Home from "./components/Home";
+
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Information from "./components/Information";
+import Configuration from "./components/Configuration";
 import Models from "./components/Models";
 import Footer from "./components/Footer";
 import PointCloudViewer from "./components/PointCloudViewer";
@@ -18,6 +22,33 @@ function App() {
   const [theme, setTheme] = useState(false); // 0 = dark, 1 = light
   const [activeBB, setActiveBB] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [viewType, setViewType] = useState(null); // 0 = FULL, 1 = PLANT, 2 = SELECTION
+  const [viewConfig, setViewConfig] = useState({
+    controls: 0, // 0 - FPS, 1 - Orbital
+    pointBudget: 900e3, // [100e3 ... 10e6]
+  });
+  const [GPU, setGPU] = useState({
+    isMobile: "-",
+    gpu: "-",
+    tier: "-",
+  });
+
+  // Get GPU info @ mount
+  useEffect(async () => {
+    const gpu = await getGPUTier();
+    setGPU(gpu);
+  }, []);
+
+  // Update appearance settings (point budget, splat quality, etc)
+  // when GPU info is already available
+  useEffect(() => {
+    if (GPU.tier != "-") {
+      const values = [900e3, 4e6, 8e6];
+      setViewConfig((prev) => ({
+        ...prev,
+        ["pointBudget"]: values[GPU.tier - 1],
+      }));
+    }
+  }, [GPU]);
 
   const activateBB = (i) => {
     let arr = [...activeBB];
@@ -61,7 +92,6 @@ function App() {
         item.style.color = "black";
       }
       // === Home ===
-      const title_home = document.getElementById("title-home");
       title_home.style.color = "black";
       title_home.style.textShadow = "0px 0px 3px red";
       ellipse_top.style.opacity = "0";
@@ -190,11 +220,26 @@ function App() {
                   activateBB={activateBB}
                   setViewType={(vt) => setViewType(vt)}
                 />
-                <Footer />
+                <Configuration
+                  GPU={GPU}
+                  theme={theme}
+                  viewConfig={viewConfig}
+                  setViewConfig={(item, value) => {
+                    setViewConfig((prev) => ({
+                      ...prev,
+                      [item]: value,
+                    }));
+                  }}
+                />
+                <Footer theme={theme} />
               </>
             </Route>
             <Route path="/PointCloudViewer">
-              <PointCloudViewer activeBB={activeBB} viewType={viewType} />
+              <PointCloudViewer
+                activeBB={activeBB}
+                viewType={viewType}
+                viewConfig={viewConfig}
+              />
             </Route>
           </Switch>
         </Router>
