@@ -209,7 +209,9 @@ const Configuration = (props) => {
                 />
                 <span>10M</span>
               </div>
-              <span>{numWithCommas(props.viewConfig.pointBudget)}</span>
+              <span>
+                <b>{numWithCommas(props.viewConfig.pointBudget)}</b>
+              </span>
               <div style={{ margin: "1rem 0" }}>
                 {lang.configuration.sections[1].pointBudget.description.map(
                   (par, i) => (
@@ -241,7 +243,9 @@ const Configuration = (props) => {
                 />
                 <span>100º</span>
               </div>
-              <span>{props.viewConfig.fov}</span>
+              <span>
+                <b>{props.viewConfig.fov}</b>
+              </span>
               <div style={{ margin: "1rem 0" }}>
                 {lang.configuration.sections[1].fov.description.map(
                   (par, i) => (
@@ -306,10 +310,7 @@ const Configuration = (props) => {
               </div>
             </div>
             <div style={appearanceItemStyle}>
-              <i
-                className="fas fa-lightbulb"
-                style={{ fontSize: "2.5rem", transform: "rotate(180deg)" }}
-              />
+              <i className="fas fa-lightbulb" style={{ fontSize: "2.5rem" }} />
               <p>
                 <b>{lang.configuration.sections[1].edl.title}</b>
               </p>

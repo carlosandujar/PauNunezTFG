@@ -15,6 +15,7 @@ export default class PointCloudViewer extends React.Component {
   constructor(props) {
     super(props);
     this.potreeContainerDiv = React.createRef();
+    this.state = {};
   }
 
   render() {
@@ -22,11 +23,26 @@ export default class PointCloudViewer extends React.Component {
       <div className="potree_container">
         <div id="potree_render_area" ref={this.potreeContainerDiv}></div>
         <div id="potree_sidebar_container"> </div>
+        <span
+          style={{
+            position: "absolute",
+            top: "0",
+            right: "0",
+            zIndex: "3",
+            textShadow: "0px 0px 1rem black",
+          }}
+        >
+          {this.viewer ? `Velocitat = ${this.viewer.moveSpeed.toFixed(2)}` : ""}
+        </span>
       </div>
     );
   }
 
   componentDidMount() {
+    setInterval(() => {
+      this.forceUpdate();
+    }, 3500);
+
     // initialize Potree viewer
     const viewerElem = this.potreeContainerDiv.current;
     this.viewer = new Potree.Viewer(viewerElem);
@@ -146,6 +162,10 @@ export default class PointCloudViewer extends React.Component {
         // This forces the camera to fit the scene in the screen
         // Disable to define a custom camera position and lookAt
         // this.viewer.fitToScreen();
+
+        this.setState({
+          speed: this.viewer.getMoveSpeed(),
+        });
       },
       (e) => console.err("ERROR: ", e)
     );

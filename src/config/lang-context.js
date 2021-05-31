@@ -3,7 +3,7 @@ import React from "react";
 export const langs = {
   ca: {
     navbar: {
-      items: ["Inici", "Informació", "Model 3D", "Configuració"],
+      items: ["Inici", "Informació", "Model 3D", "Configuració", "Agraïments"],
     },
     info: {
       title: "Informació",
@@ -174,11 +174,31 @@ export const langs = {
     footer: {
       title: "Exploració Interactiva de Models de Patrimoni Cultural",
       author: "Treball de Fi de Grau de Pau Núñez Amorós",
+      supervisors: {
+        carlos: "Carlos Andújar",
+        imanol: "Imanol Muñoz",
+        text: "Projecte supervisat per ",
+        conj: " i ",
+      },
+      acknowledgements: [
+        `Adquisició dels models 3D de Sant Quirze de Pedret finançada per Pirineus Romànics, Espai de Confluències Artísiques II (PRECA II)
+        projecte (HAR2017-84451-P, Universitat de Barcelona)`,
+        `i el`,
+        `Projecte europeu JPICH-0127, Enhancement of Heritage
+        Experiences: the Middle Ages. Digital Layered Models of
+        Architecture and Mural Paintings over Time (EHEM)`,
+      ],
     },
   },
   es: {
     navbar: {
-      items: ["Inicio", "Información", "Modelo 3D", "Configuración"],
+      items: [
+        "Inicio",
+        "Información",
+        "Modelo 3D",
+        "Configuración",
+        "Agradecimientos",
+      ],
     },
     info: {
       title: "Información",
@@ -348,11 +368,31 @@ export const langs = {
     footer: {
       title: "Exploración Interactiva de Modelos de Patrimonio Cultural",
       author: "Trabajo de Fin de Grado de Pau Núñez Amorós",
+      supervisors: {
+        carlos: "Carlos Andújar",
+        imanol: "Imanol Muñoz",
+        text: "Proyecto supervisado por ",
+        conj: " e ",
+      },
+      acknowledgements: [
+        `Adquisición de los modelos 3D de Sant Quirze de Pedret financiada por Pirineos Románicos, Espacio de Confluencias Artísticas II (PRECA II)
+        proyecto (HAR2017-84451-P, Universitat de Barcelona)`,
+        `y el`,
+        `Proyecto europeo JPICH-0127, Enhancement of Heritage
+        Experiences: the Middle Ages. Digital Layered Models of
+        Architecture and Mural Paintings over Time (EHEM)`,
+      ],
     },
   },
   en: {
     navbar: {
-      items: ["Home", "Information", "3D Model", "Configuration"],
+      items: [
+        "Home",
+        "Information",
+        "3D Model",
+        "Configuration",
+        "Acknowledgments",
+      ],
     },
     info: {
       title: "Information",
@@ -522,6 +562,21 @@ export const langs = {
     footer: {
       title: "Interactive Exploration of Cultural Heritage Models",
       author: "End of Degree Project by Pau Núñez Amorós",
+      supervisors: {
+        carlos: "Carlos Andújar",
+        imanol: "Imanol Muñoz",
+        text: "Project supervision by ",
+        conj: " and ",
+      },
+      acknowledgements: [
+        `Acquisition of the 3D models of St. Quirze de Pedret funded by the
+        Romanesque Pyrenees, Space of Artistic Confluences II (PRECA II) project
+        (HAR2017-84451-P,  Universitat de Barcelona) `,
+        `and the`,
+        `JPICH-0127 EU
+        project Enhancement of Heritage Experiences: the Middle Ages. Digital
+        Layered Models of Architecture and Mural Paintings over Time (EHEM)`,
+      ],
     },
   },
 };

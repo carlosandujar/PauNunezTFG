@@ -40,6 +40,14 @@ const NavBar = (props) => {
             >
               {lang.navbar.items[3]}
             </Scroll.Link>
+            <Scroll.Link
+              to="footer"
+              smooth={true}
+              offset={100}
+              className="navbar-link"
+            >
+              {lang.navbar.items[4]}
+            </Scroll.Link>
           </nav>
           <div className="language-button-wrapper">
             <i

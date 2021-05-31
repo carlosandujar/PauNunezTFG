@@ -35,24 +35,50 @@ const Footer = (props) => {
             >
               <img src={logo} alt="logo-app" id="logo-web"></img>
               <h3>{lang.footer.title}</h3>
-              <a
-                href={`https://github.com/Artagok/`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "1.2rem",
+                  textAlign: "center",
+                }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+                <span>{lang.footer.author}</span>
+                <a
+                  href={`https://github.com/Artagok/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", marginBottom: "3rem" }}
                 >
-                  <span style={{ fontSize: "14pt" }}>{lang.footer.author}</span>
                   <img src={ryo} id="donations-profile" alt="ryosuke"></img>
+                </a>
+                <div style={{ marginBottom: "1.5rem" }}>
+                  <span>{lang.footer.supervisors.text}</span>
+                  <a
+                    href={`https://www.cs.upc.edu/~virtual/home/index.html`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>{lang.footer.supervisors.carlos}</span>
+                  </a>
+                  <span>{lang.footer.supervisors.conj}</span>
+                  <a
+                    href={`https://directori.upc.edu/directori/dadesPersona.jsp?id=1054940`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>{lang.footer.supervisors.imanol}</span>
+                  </a>
                 </div>
-              </a>
+                {lang.footer.acknowledgements.map((text, i) => (
+                  <span key={i} style={{ maxWidth: "60%" }}>
+                    {text}
+                  </span>
+                ))}
+              </div>
             </div>
             <div className="organization-logos">
               <a
