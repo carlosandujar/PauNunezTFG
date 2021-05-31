@@ -67,12 +67,15 @@ const Models = (props) => {
               </Link>
             </div>
             <div id="models-plant-map">
-              <img src={props.theme ? planta_light : planta_dark}></img>
+              <img
+                src={props.theme ? planta_light : planta_dark}
+                alt="models-plant-map"
+              ></img>
             </div>
             <div className="models-checkboxes">
               {/* First BB is plant view so we skip it */}
               {props.bb.map((bb, i) =>
-                bb.id != 0 ? (
+                bb.id !== 0 ? (
                   <span
                     className="models-room-list"
                     id={i}

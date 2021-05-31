@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { getGPUTier } from "detect-gpu";
 
 import { LangContext, langs } from "./config/lang-context";
@@ -24,7 +24,10 @@ function App() {
   const [viewType, setViewType] = useState(null); // 0 = FULL, 1 = PLANT, 2 = SELECTION
   const [viewConfig, setViewConfig] = useState({
     controls: 0, // 0 - FPS, 1 - Orbital
-    pointBudget: 900e3, // [100e3 ... 10e6]
+    pointBudget: 1e6, // [100e3 ... 10e6]
+    fov: 60, // [20 ... 100]
+    pointQuality: 0, // 0 - Standard (square), 1 - High (circle)
+    edl: false, // false - no, true - yes
   });
   const [GPU, setGPU] = useState({
     isMobile: "-",
@@ -33,19 +36,23 @@ function App() {
   });
 
   // Get GPU info @ mount
-  useEffect(async () => {
-    const gpu = await getGPUTier();
-    setGPU(gpu);
+  useEffect(() => {
+    async function getGPU() {
+      const gpu = await getGPUTier();
+      setGPU(gpu);
+    }
+    getGPU();
   }, []);
 
   // Update appearance settings (point budget, splat quality, etc)
   // when GPU info is already available
   useEffect(() => {
-    if (GPU.tier != "-") {
+    if (GPU.tier !== "-") {
       const values = [900e3, 4e6, 8e6];
       setViewConfig((prev) => ({
         ...prev,
-        ["pointBudget"]: values[GPU.tier - 1],
+        pointBudget: values[GPU.tier - 1],
+        pointQuality: GPU.tier > 2 ? 1 : 0,
       }));
     }
   }, [GPU]);
@@ -56,6 +63,7 @@ function App() {
     setActiveBB(arr);
   };
 
+  // TODO: Make theme change fully declarative
   useEffect(() => {
     const navbar = document.getElementsByClassName("navbar-wrapper")[0];
     const navbar_link = document.getElementsByClassName("navbar-link");
@@ -250,8 +258,6 @@ function App() {
 
 export default App;
 
-////  Info
-//// Translation
 // TODO: Trajectories (+ voiceover)
 // TODO: Fotos
 // Matriu que multiplicada per (0,0,1) o (0,0,-1)

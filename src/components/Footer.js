@@ -16,9 +16,6 @@ const Footer = (props) => {
           <div
             className="gradient-separator-2"
             style={{
-              background: `rgb(${
-                !props.theme ? "15, 15, 15" : "255, 255, 255"
-              })`,
               background: `linear-gradient(180deg, 
                 rgba(${
                   !props.theme ? "15, 15, 15" : "255, 255, 255"
@@ -53,7 +50,7 @@ const Footer = (props) => {
                   }}
                 >
                   <span style={{ fontSize: "14pt" }}>{lang.footer.author}</span>
-                  <img src={ryo} id="donations-profile"></img>
+                  <img src={ryo} id="donations-profile" alt="ryosuke"></img>
                 </div>
               </a>
             </div>

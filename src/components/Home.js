@@ -8,8 +8,8 @@ import carousel4 from "../assets/img/carousel/ext2.jpg";
 import carousel3 from "../assets/img/carousel/int1.jpg";
 import carousel1 from "../assets/img/carousel/int2.jpg";
 import ellipse_top from "../assets/img/carousel/ellipse_top.png";
-import ellipse_bot from "../assets/img/carousel/ellipse_bot.png";
 import ellipse_top_white from "../assets/img/carousel/ellipse_top_white.png";
+// import ellipse_bot from "../assets/img/carousel/ellipse_bot.png";
 
 const Home = (props) => {
   return (

@@ -146,6 +146,28 @@ export const langs = {
               `Com més alt sigui el nombre, més potència gràfica es requereix. Disminueix el valor si tens problemes de rendiment.`,
             ],
           },
+          fov: {
+            title: "Camp de visió",
+            description: [
+              `Especifica l'amplada del camp de visió.`,
+              `Com més alt sigui el nombre, més angle d'obertura tindrà la càmera i més parts de l'escena seran visibles.`,
+            ],
+          },
+          pointQuality: {
+            title: "Qualitat del punt",
+            values: ["Estàndard", "Alta"],
+            description: [
+              `Especifica la qualitat del punt del núvol de punts que forma el model.`,
+              `En qualitat estàndard el punt té forma quadrada, mentre que en qualitat alta, el punt té forma circular i li dóna a les superfícies un aspecte més suau.`,
+            ],
+          },
+          edl: {
+            title: "Il·luminació Eye-Dome (EDL)",
+            values: ["Desactivat", "Activat"],
+            description: [
+              `És una tècnica de renderitzat no fotorrealista que realça els contorns de les superfícies. Resulta en una estètica que recorda al dibuix còmic, de forma similar a la tècnica cel shading`,
+            ],
+          },
         },
       ],
     },
@@ -298,6 +320,28 @@ export const langs = {
               `Cuanto más alto sea el número, más potencia gráfica se requiere. Disminuye el valor si tienes problemas de rendimento.`,
             ],
           },
+          fov: {
+            title: "Campo de visión",
+            description: [
+              `Especifica la amplitud del campo de visión.`,
+              `Cuanto más alto sea el número, más ángulo de apertura tendrá la cámara y más partes de la escena serán visibles.`,
+            ],
+          },
+          pointQuality: {
+            title: "Calidad del punto",
+            values: ["Estándar", "Alta"],
+            description: [
+              `Especifica la calidad del punto de la nube de puntos que forma el modelo.`,
+              `En calidad estándar el punto tiene forma cuadrada, mientras que en calidad alta, el punt tiene forma circular y le da a les superficies un aspecto más suave.`,
+            ],
+          },
+          edl: {
+            title: "Iluminación Eye-Dome (EDL)",
+            values: ["Desactivado", "Activado"],
+            description: [
+              `Es una técnica de renderizado no fotorrealista que realiza los contornos de las superficies. Resulta en una estética que recuerda al dibujo cómic, de forma similar a la técnica cel shading`,
+            ],
+          },
         },
       ],
     },
@@ -447,7 +491,29 @@ export const langs = {
             title: "Point budget",
             description: [
               `Specify the maximum number of rendered points at any given time.`,
-              `The higher this value, the more computing power needed. Reduce it if performance is not optimal.`,
+              `The higher this value is, the more computing power needed. Reduce it if performance is not optimal.`,
+            ],
+          },
+          fov: {
+            title: "Field of View",
+            description: [
+              `Specify the width of the field of view.`,
+              `The higher this value is, the more opening angle the camera will have and more parts of the scene will be visible.`,
+            ],
+          },
+          pointQuality: {
+            title: "Point quality",
+            values: ["Standard", "High"],
+            description: [
+              `Specify point quality of the pointcloud that shapes the model.`,
+              `On standard quality, the point has a square shape, while on high quality, the point has a circular shape and makes surfaces look smoother.`,
+            ],
+          },
+          edl: {
+            title: "Eye-Dome Lighting (EDL)",
+            values: ["Disabled", "Enabled"],
+            description: [
+              `It's a non-photorealistic shading technique that embosses surfaces' outline. The resulting aesthetic reminds of comic drawing, in a similar way to cel shading technique.`,
             ],
           },
         },

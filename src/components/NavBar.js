@@ -15,7 +15,8 @@ const NavBar = (props) => {
           <nav>
             <Scroll.Link
               onClick={Scroll.animateScroll.scrollToTop}
-              to=""
+              to="home"
+              offset={-50}
               smooth={true}
               className="navbar-link"
             >

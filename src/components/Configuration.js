@@ -40,8 +40,8 @@ const Configuration = (props) => {
     boxShadow: !props.theme
       ? "0px 0px 2rem 2rem rgba(15, 15, 15, 0.75)"
       : "0px 0px 2rem 2rem rgba(255, 255, 255, 0.75)",
-    // width: "33%",
-    margin: "3rem 0",
+    width: "35%",
+    margin: "3rem 2.5rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -81,6 +81,7 @@ const Configuration = (props) => {
               <img
                 src={!props.theme ? wasd_dark : wasd_light}
                 style={navItemImgStyle}
+                alt="fps navigation"
               ></img>
               <div style={navItemDescriptionStyle}>
                 <h5
@@ -110,6 +111,7 @@ const Configuration = (props) => {
               <img
                 src={!props.theme ? mouse_dark : mouse_light}
                 style={navItemImgStyle}
+                alt="orbital navigation"
               ></img>
               <div style={navItemDescriptionStyle}>
                 <h5
@@ -160,9 +162,9 @@ const Configuration = (props) => {
               ]
             }`}</span>
             <br></br>
-            <span>{`${
-              lang.configuration.sections[1].specs.gpu
-            }: ${props.GPU.gpu.toUpperCase()}`}</span>
+            <span>{`${lang.configuration.sections[1].specs.gpu}: ${
+              props.GPU.gpu ? props.GPU.gpu.toUpperCase() : "-"
+            }`}</span>
             <br></br>
             <span>{`${lang.configuration.sections[1].specs.categoria}: ${
               lang.configuration.sections[1].specs.categoriaValue[
@@ -177,26 +179,29 @@ const Configuration = (props) => {
               flexWrap: "wrap",
               // margin: "3rem 0 0rem",
               padding: "0 0 3rem",
-              justifyContent: "space-evenly",
-              alignItems: "stretch",
+              justifyContent: "center",
+              // alignItems: "flex-start",
+              // alignContent: "flex-end",
               fontSize: "1.25rem",
             }}
           >
             <div style={appearanceItemStyle}>
               <i className="fas fa-cloud" style={{ fontSize: "2.5rem" }} />
-              <Form.Label>
+              <Form.Label htmlFor="pointBudget-input">
                 <b>{lang.configuration.sections[1].pointBudget.title}</b>
               </Form.Label>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span>100K</span>
                 <Form.Control
                   type="range"
+                  id="pointBudget-input"
+                  name="pointBudget-input"
                   custom
                   style={{ margin: "0 1rem 0.5rem", cursor: "pointer" }}
                   max={10e6}
                   min={100e3}
                   step={100}
-                  defaultValue={props.viewConfig.pointBudget}
+                  // defaultValue={props.viewConfig.pointBudget}
                   value={props.viewConfig.pointBudget}
                   onChange={(e) =>
                     props.setViewConfig("pointBudget", parseInt(e.target.value))
@@ -205,7 +210,7 @@ const Configuration = (props) => {
                 <span>10M</span>
               </div>
               <span>{numWithCommas(props.viewConfig.pointBudget)}</span>
-              <div style={{ maxWidth: "30vw", margin: "1rem 0" }}>
+              <div style={{ margin: "1rem 0" }}>
                 {lang.configuration.sections[1].pointBudget.description.map(
                   (par, i) => (
                     <p id={i}>{par}</p>
@@ -213,9 +218,139 @@ const Configuration = (props) => {
                 )}
               </div>
             </div>
-            <div style={appearanceItemStyle}>Hola</div>
-            <div style={appearanceItemStyle}>Hola</div>
-            <div style={appearanceItemStyle}>Hola</div>
+            <div style={appearanceItemStyle}>
+              <i className="fas fa-video" style={{ fontSize: "2.5rem" }} />
+              <Form.Label htmlFor="fov-input">
+                <b>{lang.configuration.sections[1].fov.title}</b>
+              </Form.Label>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>20º</span>
+                <Form.Control
+                  type="range"
+                  id="fov-input"
+                  name="fov-input"
+                  custom
+                  style={{ margin: "0 1rem 0.5rem", cursor: "pointer" }}
+                  max={100}
+                  min={20}
+                  // defaultValue={props.viewConfig.pointBudget}
+                  value={props.viewConfig.fov}
+                  onChange={(e) =>
+                    props.setViewConfig("fov", parseInt(e.target.value))
+                  }
+                />
+                <span>100º</span>
+              </div>
+              <span>{props.viewConfig.fov}</span>
+              <div style={{ margin: "1rem 0" }}>
+                {lang.configuration.sections[1].fov.description.map(
+                  (par, i) => (
+                    <p id={i}>{par}</p>
+                  )
+                )}
+              </div>
+            </div>
+            <div style={appearanceItemStyle}>
+              <i className="fas fa-shapes" style={{ fontSize: "2.5rem" }} />
+              <p>
+                <b>{lang.configuration.sections[1].pointQuality.title}</b>
+              </p>
+              <div>
+                <span
+                  onClick={() => props.setViewConfig("pointQuality", 0)}
+                  style={{
+                    padding: "0 0.75rem",
+                    boxShadow: !props.viewConfig.pointQuality
+                      ? "0px 0px 5px 5px rgba(255, 0, 0, 0.35)"
+                      : "none",
+                    backgroundColor: !props.viewConfig.pointQuality
+                      ? "rgba(255, 0, 0, 0.35)"
+                      : "transparent",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <i
+                    className="fas fa-square"
+                    style={{ marginRight: "0.5rem" }}
+                  ></i>
+                  {lang.configuration.sections[1].pointQuality.values[0]}
+                </span>
+                <span
+                  onClick={() => props.setViewConfig("pointQuality", 1)}
+                  style={{
+                    padding: "0 0.75rem",
+                    boxShadow: props.viewConfig.pointQuality
+                      ? "0px 0px 5px 5px rgba(255, 0, 0, 0.35)"
+                      : "none",
+                    backgroundColor: props.viewConfig.pointQuality
+                      ? "rgba(255, 0, 0, 0.35)"
+                      : "transparent",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <i
+                    className="fas fa-circle"
+                    style={{ marginRight: "0.5rem" }}
+                  ></i>
+                  {lang.configuration.sections[1].pointQuality.values[1]}
+                </span>
+              </div>
+              <div style={{ margin: "1rem 0" }}>
+                {lang.configuration.sections[1].pointQuality.description.map(
+                  (par, i) => (
+                    <p id={i}>{par}</p>
+                  )
+                )}
+              </div>
+            </div>
+            <div style={appearanceItemStyle}>
+              <i
+                className="fas fa-lightbulb"
+                style={{ fontSize: "2.5rem", transform: "rotate(180deg)" }}
+              />
+              <p>
+                <b>{lang.configuration.sections[1].edl.title}</b>
+              </p>
+              <div>
+                <span
+                  onClick={() =>
+                    props.setViewConfig("edl", !props.viewConfig.edl)
+                  }
+                  style={{
+                    padding: "0 0.75rem",
+                    boxShadow: props.viewConfig.edl
+                      ? "0px 0px 5px 5px rgba(255, 0, 0, 0.35)"
+                      : "none",
+                    backgroundColor: props.viewConfig.edl
+                      ? "rgba(255, 0, 0, 0.35)"
+                      : "transparent",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <i
+                    className={`fas ${
+                      props.viewConfig.edl ? "fa-check" : "fa-times"
+                    }`}
+                    style={{ marginRight: "0.5rem" }}
+                  ></i>
+                  {
+                    lang.configuration.sections[1].edl.values[
+                      props.viewConfig.edl ? 1 : 0
+                    ]
+                  }
+                </span>
+                <div style={{ margin: "1rem 0" }}>
+                  {lang.configuration.sections[1].edl.description.map(
+                    (par, i) => (
+                      <p id={i}>{par}</p>
+                    )
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       )}

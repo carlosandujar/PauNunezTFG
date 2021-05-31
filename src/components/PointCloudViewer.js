@@ -31,12 +31,13 @@ export default class PointCloudViewer extends React.Component {
     const viewerElem = this.potreeContainerDiv.current;
     this.viewer = new Potree.Viewer(viewerElem);
 
-    this.viewer.setEDLEnabled(false);
-    this.viewer.setFOV(60);
+    this.viewer.setEDLEnabled(this.props.viewConfig.edl);
+    this.viewer.setFOV(this.props.viewConfig.fov || 60);
     this.viewer.setPointBudget(this.props.viewConfig.pointBudget || 1e6);
     this.viewer.loadSettingsFromURL();
+    // this.viewer.showAbout();
 
-    // this.viewer.showPanel(0);
+    // this.viewer.stats.showPanel(0);
 
     this.viewer.loadGUI(() => {
       this.viewer.setLanguage("en");
@@ -57,7 +58,9 @@ export default class PointCloudViewer extends React.Component {
         // material.activeAttributeName = "rgba";
         material.minSize = 1;
         material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-        material.shape = Potree.PointShape.SQUARE;
+        material.shape = this.props.viewConfig.pointQuality
+          ? Potree.PointShape.CIRCLE
+          : Potree.PointShape.SQUARE;
 
         scene.addPointCloud(pointcloud);
 
