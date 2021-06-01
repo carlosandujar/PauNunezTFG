@@ -1,4 +1,5 @@
 import React from "react";
+import { LangContext } from "../config/lang-context";
 
 import BoundingBoxes, {
   ViewType,
@@ -15,34 +16,62 @@ export default class PointCloudViewer extends React.Component {
   constructor(props) {
     super(props);
     this.potreeContainerDiv = React.createRef();
-    this.state = {};
+
+    this.state = {
+      speed: 5,
+    };
+
+    this.speedSpanStyle = {
+      position: "absolute",
+      top: "0%",
+      right: "0.25rem",
+      zIndex: "3",
+      backgroundColor: "rgba(15, 15, 15, 0.75)",
+      padding: "0 0.25rem",
+      boxShadow: "0px 0px 8px 8px rgba(15, 15, 15, 0.75)",
+    };
+
+    window.addEventListener("wheel", (e) => this.forceUpdate());
+
+    // Did the user select only one room?
+    // Returns [bool, int] representing
+    // 1) Wether or not there is just one room selected
+    // 2) If so, index of the room
+    this.justOneRoom = () => {
+      let index = -1;
+      let count = 0;
+      // We skeep activeBB[0] wichi is PLANT view
+      for (let i = 1; i < this.props.activeBB.length; i++) {
+        if (this.props.activeBB[i]) {
+          index = i;
+          count++;
+        }
+      }
+      return [count === 1, index];
+    };
   }
 
   render() {
     return (
-      <div className="potree_container">
-        <div id="potree_render_area" ref={this.potreeContainerDiv}></div>
-        <div id="potree_sidebar_container"> </div>
-        <span
-          style={{
-            position: "absolute",
-            top: "0",
-            right: "0",
-            zIndex: "3",
-            textShadow: "0px 0px 1rem black",
-          }}
-        >
-          {this.viewer ? `Velocitat = ${this.viewer.moveSpeed.toFixed(2)}` : ""}
-        </span>
-      </div>
+      <LangContext.Consumer>
+        {([lang, changeLang, l]) => (
+          <div className="potree_container">
+            <div id="potree_render_area" ref={this.potreeContainerDiv}></div>
+            <div id="potree_sidebar_container"> </div>
+            <span style={this.speedSpanStyle}>
+              {this.viewer && !this.props.viewConfig.controls
+                ? `${
+                    lang.pointCloudViewer.speed
+                  } = ${this.viewer.moveSpeed.toFixed(2)}`
+                : ""}
+            </span>
+          </div>
+        )}
+      </LangContext.Consumer>
     );
   }
 
   componentDidMount() {
-    setInterval(() => {
-      this.forceUpdate();
-    }, 3500);
-
     // initialize Potree viewer
     const viewerElem = this.potreeContainerDiv.current;
     this.viewer = new Potree.Viewer(viewerElem);
@@ -53,10 +82,9 @@ export default class PointCloudViewer extends React.Component {
     this.viewer.loadSettingsFromURL();
     // this.viewer.showAbout();
 
-    // this.viewer.stats.showPanel(0);
-
     this.viewer.loadGUI(() => {
-      this.viewer.setLanguage("en");
+      // Set language, no catalan for Potree unfortunately :(
+      this.viewer.setLanguage(this.props.lang);
       window.$("#menu_appearance").next().show();
       window.$("#menu_tools").next().show();
       window.$("#menu_clipping").next().show();
@@ -88,6 +116,8 @@ export default class PointCloudViewer extends React.Component {
         );
         this.viewer.setMoveSpeed(5);
 
+        // ========================== CAMERAS ========================== //
+
         // Set the default camera
         scene.view.setView(
           Cameras.defaultCam.pos,
@@ -95,11 +125,30 @@ export default class PointCloudViewer extends React.Component {
           2000
         );
 
-        // Reset cameras if necessary depending on the active BB
         // Reset camera for PLANT view
         if (this.props.viewType === ViewType.PLANT) {
           scene.view.setView(Cameras["0"].pos, Cameras["0"].target, 2000);
         }
+
+        // Reset camera for SELECTION view
+        if (this.props.viewType === ViewType.SELECTION) {
+          scene.view.setView(
+            Cameras.defaultSelection.pos,
+            Cameras.defaultSelection.target,
+            2000
+          );
+          // Reset again if just one room is selected
+          const [one, room] = this.justOneRoom();
+          if (one) {
+            scene.view.setView(
+              Cameras[room.toString()].pos,
+              Cameras[room.toString()].target,
+              3000
+            );
+          }
+        }
+
+        // ========================== BOUNDING BOXES ========================== //
 
         // Clean noise under the monument with CleanUpBoundingBoxes
         // Only for FULL and PLANT views
@@ -166,6 +215,8 @@ export default class PointCloudViewer extends React.Component {
         this.setState({
           speed: this.viewer.getMoveSpeed(),
         });
+
+        document.getElementById("potree_render_area").focus();
       },
       (e) => console.err("ERROR: ", e)
     );

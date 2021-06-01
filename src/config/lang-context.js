@@ -104,7 +104,7 @@ export const langs = {
         "F - Absidiola sud",
         "G - Avanstala",
       ],
-      tooltip: `Primer seleccioneu com a mínim una estança a la llista situada a la dreta`,
+      tooltip: `Primer seleccioneu com a mínim una estança de la llista situada a la dreta`,
     },
     configuration: {
       title: "Configuració",
@@ -189,6 +189,9 @@ export const langs = {
         Experiences: the Middle Ages. Digital Layered Models of
         Architecture and Mural Paintings over Time (EHEM)`,
       ],
+    },
+    pointCloudViewer: {
+      speed: "Velocitat",
     },
   },
   es: {
@@ -299,7 +302,7 @@ export const langs = {
         "F - Absidiolo sur",
         "G - Antesala",
       ],
-      tooltip: `Primero seleccionad como mínimo una estancia en la lista situada en la derecha`,
+      tooltip: `Primero seleccionad como mínimo una estancia de la lista situada en la derecha`,
     },
     configuration: {
       title: "Configuración",
@@ -384,6 +387,9 @@ export const langs = {
         Experiences: the Middle Ages. Digital Layered Models of
         Architecture and Mural Paintings over Time (EHEM)`,
       ],
+    },
+    pointCloudViewer: {
+      speed: "Velocidad",
     },
   },
   en: {
@@ -580,6 +586,9 @@ export const langs = {
         project Enhancement of Heritage Experiences: the Middle Ages. Digital
         Layered Models of Architecture and Mural Paintings over Time (EHEM)`,
       ],
+    },
+    pointCloudViewer: {
+      speed: "Speed",
     },
   },
 };

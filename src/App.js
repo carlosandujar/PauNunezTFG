@@ -16,10 +16,14 @@ import Footer from "./components/Footer";
 import PointCloudViewer from "./components/PointCloudViewer";
 
 function App() {
+  // ca = catalan, es = spanish, en = english
   const [lang, changeLang] = useState(
     langs[localStorage.getItem("lang") || "ca"]
   );
-  const [theme, setTheme] = useState(false); // 0 = dark, 1 = light
+  // 0 = dark, 1 = light
+  const [theme, setTheme] = useState(
+    (localStorage.getItem("theme") === "true" ? true : false) || false
+  );
   const [activeBB, setActiveBB] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [viewType, setViewType] = useState(null); // 0 = FULL, 1 = PLANT, 2 = SELECTION
   const [viewConfig, setViewConfig] = useState({
@@ -34,6 +38,11 @@ function App() {
     gpu: "-",
     tier: "-",
   });
+
+  // Save preferred theme to localStorage
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   // Get GPU info @ mount
   useEffect(() => {
@@ -116,6 +125,7 @@ function App() {
                 activeBB={activeBB}
                 viewType={viewType}
                 viewConfig={viewConfig}
+                lang={localStorage.getItem("lang") || "ca"}
               />
             </Route>
           </Switch>

@@ -197,7 +197,11 @@ const Configuration = (props) => {
                   id="pointBudget-input"
                   name="pointBudget-input"
                   custom
-                  style={{ margin: "0 1rem 0.5rem", cursor: "pointer" }}
+                  style={{
+                    margin: "0 1rem 0.5rem",
+                    cursor: "pointer",
+                    minWidth: "15vw",
+                  }}
                   max={10e6}
                   min={100e3}
                   step={100}
@@ -232,7 +236,11 @@ const Configuration = (props) => {
                   id="fov-input"
                   name="fov-input"
                   custom
-                  style={{ margin: "0 1rem 0.5rem", cursor: "pointer" }}
+                  style={{
+                    margin: "0 1rem 0.5rem",
+                    cursor: "pointer",
+                    minWidth: "15vw",
+                  }}
                   max={100}
                   min={20}
                   // defaultValue={props.viewConfig.pointBudget}
