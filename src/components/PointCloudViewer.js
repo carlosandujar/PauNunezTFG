@@ -26,6 +26,7 @@ export default class PointCloudViewer extends React.Component {
       top: "0%",
       right: "0.25rem",
       zIndex: "3",
+      color: "white",
       backgroundColor: "rgba(15, 15, 15, 0.75)",
       padding: "0 0.25rem",
       boxShadow: "0px 0px 8px 8px rgba(15, 15, 15, 0.75)",
@@ -40,7 +41,7 @@ export default class PointCloudViewer extends React.Component {
     this.justOneRoom = () => {
       let index = -1;
       let count = 0;
-      // We skeep activeBB[0] wichi is PLANT view
+      // We skip activeBB[0], which is PLANT view bb
       for (let i = 1; i < this.props.activeBB.length; i++) {
         if (this.props.activeBB[i]) {
           index = i;
@@ -88,7 +89,7 @@ export default class PointCloudViewer extends React.Component {
       window.$("#menu_appearance").next().show();
       window.$("#menu_tools").next().show();
       window.$("#menu_clipping").next().show();
-      this.viewer.toggleSidebar();
+      // this.viewer.toggleSidebar();
     });
 
     // Load and add point cloud to scene
@@ -143,7 +144,7 @@ export default class PointCloudViewer extends React.Component {
             scene.view.setView(
               Cameras[room.toString()].pos,
               Cameras[room.toString()].target,
-              3000
+              2500
             );
           }
         }

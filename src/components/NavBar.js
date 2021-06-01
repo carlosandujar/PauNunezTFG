@@ -20,6 +20,8 @@ const NavBar = (props) => {
           style={{
             backgroundColor: !props.theme ? "rgb(15, 15, 15)" : "white",
           }}
+          data-aos="fade-down"
+          data-aos-duration="1800"
         >
           <nav>
             <Scroll.Link

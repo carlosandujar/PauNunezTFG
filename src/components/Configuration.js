@@ -62,8 +62,8 @@ const Configuration = (props) => {
           }}
         >
           {/* ================================================================= */}
-          <h1>{lang.configuration.title}</h1>
-          <h3>{lang.configuration.sections[0].title}</h3>
+          <h1 data-aos="zoom-in">{lang.configuration.title}</h1>
+          <h3 data-aos="zoom-in">{lang.configuration.sections[0].title}</h3>
           <div
             style={{
               display: "flex",
@@ -77,6 +77,7 @@ const Configuration = (props) => {
               className="navigation-item"
               style={{ marginRight: "2.5rem" }}
               onClick={() => props.setViewConfig("controls", 0)}
+              data-aos="fade-right"
             >
               <img
                 src={!props.theme ? wasd_dark : wasd_light}
@@ -107,6 +108,7 @@ const Configuration = (props) => {
               className="navigation-item"
               style={{ marginLeft: "2.5rem" }}
               onClick={() => props.setViewConfig("controls", 1)}
+              data-aos="fade-left"
             >
               <img
                 src={!props.theme ? mouse_dark : mouse_light}
@@ -133,7 +135,7 @@ const Configuration = (props) => {
             </div>
           </div>
           {/* ================================================================= */}
-          <h3>{lang.configuration.sections[1].title}</h3>
+          <h3 data-aos="zoom-in">{lang.configuration.sections[1].title}</h3>
           <div
             style={{
               fontSize: "1.25rem",
@@ -146,6 +148,7 @@ const Configuration = (props) => {
                 ? "0px 0px 2rem 2rem rgba(15, 15, 15, 0.75)"
                 : "0px 0px 2rem 2rem rgba(255, 255, 255, 0.75)",
             }}
+            data-aos="zoom-in"
           >
             <i
               className={`fas ${
@@ -185,7 +188,7 @@ const Configuration = (props) => {
               fontSize: "1.25rem",
             }}
           >
-            <div style={appearanceItemStyle}>
+            <div style={appearanceItemStyle} data-aos="fade-down-right">
               <i className="fas fa-cloud" style={{ fontSize: "2.5rem" }} />
               <Form.Label htmlFor="pointBudget-input">
                 <b>{lang.configuration.sections[1].pointBudget.title}</b>
@@ -224,7 +227,7 @@ const Configuration = (props) => {
                 )}
               </div>
             </div>
-            <div style={appearanceItemStyle}>
+            <div style={appearanceItemStyle} data-aos="fade-down-left">
               <i className="fas fa-video" style={{ fontSize: "2.5rem" }} />
               <Form.Label htmlFor="fov-input">
                 <b>{lang.configuration.sections[1].fov.title}</b>
@@ -262,7 +265,7 @@ const Configuration = (props) => {
                 )}
               </div>
             </div>
-            <div style={appearanceItemStyle}>
+            <div style={appearanceItemStyle} data-aos="fade-up-right">
               <i className="fas fa-shapes" style={{ fontSize: "2.5rem" }} />
               <p>
                 <b>{lang.configuration.sections[1].pointQuality.title}</b>
@@ -317,7 +320,7 @@ const Configuration = (props) => {
                 )}
               </div>
             </div>
-            <div style={appearanceItemStyle}>
+            <div style={appearanceItemStyle} data-aos="fade-up-left">
               <i className="fas fa-lightbulb" style={{ fontSize: "2.5rem" }} />
               <p>
                 <b>{lang.configuration.sections[1].edl.title}</b>

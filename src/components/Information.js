@@ -4,11 +4,46 @@ import "./Information.css";
 import BackgroundSlider from "react-background-slider";
 import Accordion from "react-bootstrap/Accordion";
 
-import home_bg1 from "../assets/img/carousel/int1.jpg";
-import home_bg2 from "../assets/img/carousel/int2.jpg";
-import home_bg3 from "../assets/img/carousel/ext1.jpg";
-import home_bg4 from "../assets/img/carousel/ext2.jpg";
-const HOME_BG = [home_bg1, home_bg2, home_bg3, home_bg4];
+import home_bg1 from "../assets/img/background/1.jpg";
+import home_bg2 from "../assets/img/background/2.jpg";
+import home_bg3 from "../assets/img/background/3.jpg";
+import home_bg4 from "../assets/img/background/4.jpg";
+import home_bg5 from "../assets/img/background/5.jpg";
+import home_bg6 from "../assets/img/background/6.jpg";
+import home_bg7 from "../assets/img/background/7.jpg";
+import home_bg8 from "../assets/img/background/8.jpg";
+import home_bg9 from "../assets/img/background/9.jpg";
+import home_bg10 from "../assets/img/background/10.jpg";
+
+// Fisher-Yates (aka Knuth) Shuffle
+const shuffleArray = (array) => {
+  var currentIndex = array.length,
+    randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
+};
+
+// Background image slider is randomly shuffled
+const HOME_BG = shuffleArray([
+  home_bg1,
+  home_bg2,
+  home_bg3,
+  home_bg4,
+  home_bg5,
+  home_bg6,
+  home_bg7,
+  home_bg8,
+  home_bg9,
+  home_bg10,
+]);
+console.log(HOME_BG);
 
 const gmapsLink =
   "https://www.google.com/maps/place/Esgl%C3%A9sia+de+Sant+Quirze+de+Pedret/@42.1105096,1.8126689,12z/data=!4m5!3m4!1s0x12a5091b8879abd5:0xa366ebababe0f30!8m2!3d42.1074712!4d1.883649";
@@ -44,9 +79,12 @@ const Information = (props) => {
               backgroundColor: !props.theme ? "rgb(15, 15, 15)" : "white",
             }}
           >
-            <h1>{lang.info.title}</h1>
+            <h1 data-aos="zoom-in">{lang.info.title}</h1>
             <div className="info-text-wrapper">
-              <div style={{ flex: "15", textAlign: "justify" }}>
+              <div
+                style={{ flex: "15", textAlign: "justify" }}
+                data-aos="fade-right"
+              >
                 <p>{lang.info.text}</p>
                 {/* === Historia === */}
                 <h3>{lang.info.sections[0].title}</h3>
@@ -54,7 +92,10 @@ const Information = (props) => {
                   <p key={i}>{par}</p>
                 ))}
               </div>
-              <div style={{ flex: "5", textAlign: "left" }}>
+              <div
+                style={{ flex: "5", textAlign: "left" }}
+                data-aos="fade-left"
+              >
                 <ul>
                   {lang.info.list.map((item, i) => (
                     <li key={i}>
@@ -65,7 +106,7 @@ const Information = (props) => {
                 </ul>
               </div>
             </div>
-            <div className="info-text-wrapper-2">
+            <div className="info-text-wrapper-2" data-aos="fade-right">
               {/* === Arquitectura === */}
               <Accordion className="information-accordion">
                 <Accordion.Toggle
@@ -135,7 +176,7 @@ const Information = (props) => {
                 </Accordion.Collapse>
               </Accordion>
             </div>
-            <nav className="info-nav">
+            <nav className="info-nav" data-aos="fade-up">
               <div>
                 <a href={gmapsLink} target="_blank" rel="noopener noreferrer">
                   <button

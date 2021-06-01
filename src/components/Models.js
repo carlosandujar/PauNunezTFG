@@ -33,7 +33,7 @@ const Models = (props) => {
             color: !props.theme ? "white" : "black",
           }}
         >
-          <h1>{lang.models.title}</h1>
+          <h1 data-aos="fade-down">{lang.models.title}</h1>
           <div
             style={{
               display: "flex",
@@ -48,6 +48,7 @@ const Models = (props) => {
                 flexDirection: "column",
                 justifyContent: "space-between",
               }}
+              data-aos="fade-right"
             >
               <Link
                 to="/PointCloudViewer"
@@ -106,13 +107,14 @@ const Models = (props) => {
                   ? "0px 0px 2rem 2rem rgba(15, 15, 15, 0.75)"
                   : "0px 0px 2rem 2rem rgba(255, 255, 255, 0.75)",
               }}
+              data-aos="zoom-out"
             >
               <img
                 src={props.theme ? planta_light : planta_dark}
                 alt="models-plant-map"
               ></img>
             </div>
-            <div className="models-checkboxes">
+            <div className="models-checkboxes" data-aos="fade-left">
               {/* First BB is plant view so we skip it */}
               <i
                 className="fas fa-times-circle"
@@ -151,7 +153,7 @@ const Models = (props) => {
                       backgroundColor: !props.theme
                         ? "rgba(15, 15, 15, 0.75)"
                         : "rgba(255, 255, 255, 0.75)",
-                      transition: "0.1s 0s all linear",
+                      // transition: "0.1s 0s all ease",
                     }}
                   >{`${lang.models.checkboxes[bb.id - 1]}`}</span>
                 ) : null

@@ -16,10 +16,14 @@
 
 body {
   font-family: Merriweather, Roboto, "Trebuchet MS", Arial;
-  color: white;
+  /* color: white; */
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(15, 15, 15);
-  overflow: hidden scroll;
+  /* background-color: rgb(15, 15, 15); */
+  /* overflow: hidden scroll; */
+  overflow-x: hidden;
+
+  /*! Important! ha calgut comentar el següent a potree_libs/potree/potree.css: */
+  /*! body{ position: absolute, overflow: hidden } */
 }

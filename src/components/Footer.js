@@ -40,8 +40,14 @@ const Footer = (props) => {
                 alignItems: "center",
               }}
             >
-              <img src={logo} alt="logo-app" id="logo-web"></img>
-              <h3>{lang.footer.title}</h3>
+              <img
+                src={logo}
+                alt="logo-app"
+                id="logo-web"
+                data-aos="zoom-in"
+                data-aos-anchor-placement="center-bottom"
+              ></img>
+              <h3 data-aos="zoom-in">{lang.footer.title}</h3>
 
               <div
                 style={{
@@ -52,6 +58,7 @@ const Footer = (props) => {
                   fontSize: "1.2rem",
                   textAlign: "center",
                 }}
+                data-aos="zoom-in"
               >
                 <span>{lang.footer.author}</span>
                 <a
@@ -101,6 +108,7 @@ const Footer = (props) => {
                 href={`https://www.upc.edu/`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-aos="fade-right"
               >
                 <img src={upc} alt="upc-logo"></img>
               </a>
@@ -108,6 +116,7 @@ const Footer = (props) => {
                 href={`https://www.fib.upc.edu/`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-aos="zoom-in"
               >
                 <img src={fib} alt="fib-logo"></img>
               </a>
@@ -115,6 +124,7 @@ const Footer = (props) => {
                 href={`https://www.virvig.eu/`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-aos="fade-left"
               >
                 <img src={virvig} alt="virvig-logo"></img>
               </a>

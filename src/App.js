@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { getGPUTier } from "detect-gpu";
+import AOS from "aos";
 
 import { LangContext, langs } from "./config/lang-context";
 import BoundingBoxes from "./config/viewer-variables";
 
 import "./App.css";
+import "aos/dist/aos.css";
 
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
@@ -39,9 +41,21 @@ function App() {
     tier: "-",
   });
 
-  // Save preferred theme to localStorage
+  // AOS (Animate on Scroll) initialization
+  useEffect(() => {
+    AOS.init({
+      duration: 2500,
+      once: true,
+      mirror: false,
+      anchorPlacement: "top-center",
+    });
+  }, []);
+
+  // Save preferred theme to localStorage and
+  // imperatively set body's background color
   useEffect(() => {
     localStorage.setItem("theme", theme);
+    document.body.style.backgroundColor = !theme ? "rgb(15, 15, 15)" : "white";
   }, [theme]);
 
   // Get GPU info @ mount
@@ -77,7 +91,15 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        color: !theme ? "white" : "black",
+        backgroundColor: !theme
+          ? "rgba(15, 15, 15, 0.3)"
+          : "rgba(255, 255, 255, 0.1)",
+      }}
+    >
       <LangContext.Provider
         value={[
           lang,
