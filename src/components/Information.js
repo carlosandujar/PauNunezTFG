@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { LangContext } from "../config/lang-context";
 import "./Information.css";
 import BackgroundSlider from "react-background-slider";
+import Accordion from "react-bootstrap/Accordion";
+
 import home_bg1 from "../assets/img/carousel/int1.jpg";
 import home_bg2 from "../assets/img/carousel/int2.jpg";
 import home_bg3 from "../assets/img/carousel/ext1.jpg";
@@ -17,11 +19,31 @@ const wikiLink_es =
   "https://es.wikipedia.org/wiki/Iglesia_de_San_Quirico_de_Pedret";
 
 const Information = (props) => {
+  const [dropdowns, setDropdowns] = useState([false, false]);
+
+  const toggleDropdown = (i) => {
+    let arr = [...dropdowns];
+    arr[i] = !arr[i];
+    setDropdowns(arr);
+  };
+
+  const infoNavButtonStyle = {
+    color: !props.theme ? "white" : "black",
+    border: !props.theme ? "1px solid white" : "1px solid black",
+  };
+
   return (
     <LangContext.Consumer>
       {([lang, _, l]) => (
         <>
-          <section className="info-wrapper" id="information">
+          <section
+            className="info-wrapper"
+            id="information"
+            style={{
+              color: !props.theme ? "white" : "black",
+              backgroundColor: !props.theme ? "rgb(15, 15, 15)" : "white",
+            }}
+          >
             <h1>{lang.info.title}</h1>
             <div className="info-text-wrapper">
               <div style={{ flex: "15", textAlign: "justify" }}>
@@ -45,27 +67,81 @@ const Information = (props) => {
             </div>
             <div className="info-text-wrapper-2">
               {/* === Arquitectura === */}
-              <h3>{lang.info.sections[1].title}</h3>
-              {lang.info.sections[1].par.map((par, i) => (
-                <p key={i}>{par}</p>
-              ))}
+              <Accordion className="information-accordion">
+                <Accordion.Toggle
+                  eventKey="0"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: !props.theme ? "white" : "black",
+                  }}
+                  onClick={() => toggleDropdown(0)}
+                >
+                  <h3 style={{ display: "inline-block" }}>
+                    {lang.info.sections[1].title}
+                  </h3>
+                  <i
+                    className={`fas fa-angle-${dropdowns[0] ? "up" : "down"}`}
+                    style={{ marginLeft: "0.5rem", fontSize: "1.75rem" }}
+                  ></i>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <>
+                    {lang.info.sections[1].par.map((par, i) => (
+                      <p key={i}>{par}</p>
+                    ))}
+                  </>
+                </Accordion.Collapse>
+              </Accordion>
               {/* === Pintures al fresc === */}
-              <h3>{lang.info.sections[2].title}</h3>
-              {lang.info.sections[2].subsections.map((sub, i) => (
-                <>
-                  <h4 key={i} className="info-text-wrapper-2-h4">
-                    {sub.title}
-                  </h4>
-                  {sub.par.map((par, j) => (
-                    <p key={j}>{par}</p>
-                  ))}
-                </>
-              ))}
+              <Accordion className="information-accordion">
+                <Accordion.Toggle
+                  eventKey="0"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: !props.theme ? "white" : "black",
+                  }}
+                  onClick={() => toggleDropdown(1)}
+                >
+                  <h3 style={{ display: "inline-block" }}>
+                    {lang.info.sections[2].title}
+                  </h3>
+                  <i
+                    className={`fas fa-angle-${dropdowns[1] ? "up" : "down"}`}
+                    style={{ marginLeft: "0.5rem", fontSize: "1.75rem" }}
+                  ></i>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <>
+                    {lang.info.sections[2].subsections.map((sub, i) => (
+                      <>
+                        <h4
+                          key={i}
+                          style={{
+                            borderBottom: !props.theme
+                              ? "1px dashed rgba(255, 255, 255, 0.65)"
+                              : "1px dashed rgba(0, 0, 0, 0.85)",
+                          }}
+                        >
+                          {sub.title}
+                        </h4>
+                        {sub.par.map((par, j) => (
+                          <p key={j}>{par}</p>
+                        ))}
+                      </>
+                    ))}
+                  </>
+                </Accordion.Collapse>
+              </Accordion>
             </div>
             <nav className="info-nav">
               <div>
                 <a href={gmapsLink} target="_blank" rel="noopener noreferrer">
-                  <button className="info-nav-button">
+                  <button
+                    className="info-nav-button"
+                    style={infoNavButtonStyle}
+                  >
                     <i className="fas fa-map-marker-alt"></i> -{" "}
                     {lang.info.buttons.map}
                   </button>
@@ -76,7 +152,10 @@ const Information = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="info-nav-button">
+                  <button
+                    className="info-nav-button"
+                    style={infoNavButtonStyle}
+                  >
                     <i className="fas fa-globe"></i> - {lang.info.buttons.web}
                   </button>
                 </a>
@@ -85,7 +164,10 @@ const Information = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="info-nav-button">
+                  <button
+                    className="info-nav-button"
+                    style={infoNavButtonStyle}
+                  >
                     <i className="fab fa-wikipedia-w"></i> -{" "}
                     {lang.info.buttons.wiki}
                   </button>
@@ -117,7 +199,14 @@ const Information = (props) => {
               </div>
             </nav>
           </section>
-          <div className="gradient-separator"></div>
+          <div
+            className="gradient-separator"
+            style={{
+              background: !props.theme
+                ? `linear-gradient(0deg, rgba(15, 15, 15, 0.75)    0%, rgba(15, 15, 15, 1)    100%`
+                : `linear-gradient(0deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 1) 100%`,
+            }}
+          ></div>
           <BackgroundSlider images={HOME_BG} duration={10} transition={3} />
         </>
       )}

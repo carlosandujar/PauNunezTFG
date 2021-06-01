@@ -8,10 +8,19 @@ import es from "../assets/img/lang/es.png";
 import en from "../assets/img/lang/en.png";
 
 const NavBar = (props) => {
+  const navBarLinkStyle = {
+    color: !props.theme ? "white" : "black",
+  };
+
   return (
     <LangContext.Consumer>
       {([lang, changeLang, l]) => (
-        <div className="navbar-wrapper">
+        <div
+          className="navbar-wrapper"
+          style={{
+            backgroundColor: !props.theme ? "rgb(15, 15, 15)" : "white",
+          }}
+        >
           <nav>
             <Scroll.Link
               onClick={Scroll.animateScroll.scrollToTop}
@@ -19,10 +28,16 @@ const NavBar = (props) => {
               offset={-50}
               smooth={true}
               className="navbar-link"
+              style={navBarLinkStyle}
             >
               {lang.navbar.items[0]}
             </Scroll.Link>
-            <Scroll.Link to="information" smooth={true} className="navbar-link">
+            <Scroll.Link
+              to="information"
+              smooth={true}
+              className="navbar-link"
+              style={navBarLinkStyle}
+            >
               {lang.navbar.items[1]}
             </Scroll.Link>
             <Scroll.Link
@@ -30,6 +45,7 @@ const NavBar = (props) => {
               smooth={true}
               offset={-50}
               className="navbar-link"
+              style={navBarLinkStyle}
             >
               {lang.navbar.items[2]}
             </Scroll.Link>
@@ -37,6 +53,7 @@ const NavBar = (props) => {
               to="configuration"
               smooth={true}
               className="navbar-link"
+              style={navBarLinkStyle}
             >
               {lang.navbar.items[3]}
             </Scroll.Link>
@@ -45,6 +62,7 @@ const NavBar = (props) => {
               smooth={true}
               offset={100}
               className="navbar-link"
+              style={navBarLinkStyle}
             >
               {lang.navbar.items[4]}
             </Scroll.Link>

@@ -25,7 +25,14 @@ const Footer = (props) => {
                 }, 1) 100%)`,
             }}
           ></div>
-          <div className="footer-contents">
+          <div
+            className="footer-contents"
+            style={{
+              backgroundColor: !props.theme ? "rgb(15, 15, 15)" : "white",
+              color: !props.theme ? "white" : "black",
+              textShadow: !props.theme ? "0px 0px 2px red" : "none",
+            }}
+          >
             <div
               style={{
                 display: "flex",
@@ -53,7 +60,16 @@ const Footer = (props) => {
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none", marginBottom: "3rem" }}
                 >
-                  <img src={ryo} id="donations-profile" alt="ryosuke"></img>
+                  <img
+                    src={ryo}
+                    id="donations-profile"
+                    alt="ryosuke"
+                    style={{
+                      boxShadow: !props.theme
+                        ? "0px 0px 7px 0px rgba(255, 0, 0, 0.5)"
+                        : "none",
+                    }}
+                  />
                 </a>
                 <div style={{ marginBottom: "1.5rem" }}>
                   <span>{lang.footer.supervisors.text}</span>

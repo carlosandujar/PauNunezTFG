@@ -104,6 +104,7 @@ export const langs = {
         "F - Absidiola sud",
         "G - Avanstala",
       ],
+      tooltip: `Primer seleccioneu com a mínim una estança a la llista situada a la dreta`,
     },
     configuration: {
       title: "Configuració",
@@ -165,7 +166,7 @@ export const langs = {
             title: "Il·luminació Eye-Dome (EDL)",
             values: ["Desactivat", "Activat"],
             description: [
-              `És una tècnica de renderitzat no fotorrealista que realça els contorns de les superfícies. Resulta en una estètica que recorda al dibuix còmic, de forma similar a la tècnica cel shading`,
+              `És una tècnica de renderitzat no fotorrealista que realça els contorns de les superfícies. Resulta en una estètica que recorda al dibuix còmic, de forma similar a la tècnica cel shading.`,
             ],
           },
         },
@@ -298,6 +299,7 @@ export const langs = {
         "F - Absidiolo sur",
         "G - Antesala",
       ],
+      tooltip: `Primero seleccionad como mínimo una estancia en la lista situada en la derecha`,
     },
     configuration: {
       title: "Configuración",
@@ -359,7 +361,7 @@ export const langs = {
             title: "Iluminación Eye-Dome (EDL)",
             values: ["Desactivado", "Activado"],
             description: [
-              `Es una técnica de renderizado no fotorrealista que realiza los contornos de las superficies. Resulta en una estética que recuerda al dibujo cómic, de forma similar a la técnica cel shading`,
+              `Es una técnica de renderizado no fotorrealista que realiza los contornos de las superficies. Resulta en una estética que recuerda al dibujo cómic, de forma similar a la técnica cel shading.`,
             ],
           },
         },
@@ -492,6 +494,7 @@ export const langs = {
         "F - Southern apsidiole",
         "G - Antechamber",
       ],
+      tooltip: `First select at least one room on the list to the right of the map`,
     },
     configuration: {
       title: "Configuration",
