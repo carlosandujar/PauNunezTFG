@@ -470,7 +470,7 @@ export const langs = {
       list: [
         ["Location", `: Cercs (Berga, Catalonia)`],
         ["Period", `: 9th and 10th century`],
-        ["Style", `: Prerrománico t románico`],
+        ["Style", `: Pre-romanesque and romanesque`],
         ["Paintings", `: Pre-romanesque and romanesque frescoes`],
         ["Naves", `: 1 central, 2 lateral`],
         ["Bell Tower", `: Square, incomplete`],
