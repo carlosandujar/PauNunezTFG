@@ -92,13 +92,15 @@ const Information = (props) => {
                   <p key={i}>{par}</p>
                 ))}
               </div>
-              <div
-                style={{ flex: "5", textAlign: "left" }}
-                data-aos="fade-left"
-              >
+              <div style={{ flex: "5", textAlign: "left" }}>
+                {/* Llista resum */}
                 <ul>
                   {lang.info.list.map((item, i) => (
-                    <li key={i}>
+                    <li
+                      key={i}
+                      data-aos="fade-left"
+                      data-aos-delay={`${i * 100}`}
+                    >
                       <b>{item[0]}</b>
                       {item[1]}
                     </li>
