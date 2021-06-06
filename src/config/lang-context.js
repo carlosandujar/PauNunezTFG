@@ -129,6 +129,12 @@ export const langs = {
               "Doble clic: Zoom",
             ],
           },
+          compass: {
+            title: "Brúixola",
+            values: ["No mostrar", "Mostrar"],
+            description:
+              "Una brúixola que mostra els punts cardinals i la seva orientació en tot moment.",
+          },
         },
         {
           title: "Aparença",
@@ -327,6 +333,12 @@ export const langs = {
               "Doble clic: Zoom",
             ],
           },
+          compass: {
+            title: "Brújula",
+            values: ["No mostrar", "Mostrar"],
+            description:
+              "Una brújula que muestra los puntos cardinales y su orientación en todo momento.",
+          },
         },
         {
           title: "Apariencia",
@@ -524,6 +536,12 @@ export const langs = {
               "Wheel: Zoom adjustment",
               "Double click: Zoom",
             ],
+          },
+          compass: {
+            title: "Compass",
+            values: ["Do not show", "Show"],
+            description:
+              "A compass that displays the cardinal points and their orientation at all times.",
           },
         },
         {

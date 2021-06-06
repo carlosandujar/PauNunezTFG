@@ -70,7 +70,6 @@ const Configuration = (props) => {
               flexWrap: "wrap",
               justifyContent: "center",
               alignItems: "stretch",
-              marginBottom: "6rem",
             }}
           >
             <div
@@ -134,6 +133,65 @@ const Configuration = (props) => {
               </div>
             </div>
           </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "4.5rem 0 6rem",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "1.25rem",
+                backgroundColor: !props.theme
+                  ? "rgba(15, 15, 15, 0.75)"
+                  : "rgba(255, 255, 255, 0.75)",
+                boxShadow: !props.theme
+                  ? "0px 0px 2rem 2rem rgba(15, 15, 15, 0.75)"
+                  : "0px 0px 2rem 2rem rgba(255, 255, 255, 0.75)",
+              }}
+              data-aos="fade-up"
+            >
+              <i className="fas fa-compass" style={{ fontSize: "2.5rem" }}></i>
+              <p>
+                <b>{lang.configuration.sections[0].compass.title}</b>
+              </p>
+              <div>
+                <span
+                  onClick={() =>
+                    props.setViewConfig("compass", !props.viewConfig.compass)
+                  }
+                  style={{
+                    padding: "0 0.75rem",
+                    boxShadow: props.viewConfig.compass
+                      ? "0px 0px 5px 5px rgba(255, 0, 0, 0.35)"
+                      : "none",
+                    backgroundColor: props.viewConfig.compass
+                      ? "rgba(255, 0, 0, 0.35)"
+                      : "transparent",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <i
+                    className={`fas ${
+                      props.viewConfig.compass ? "fa-check" : "fa-times"
+                    }`}
+                    style={{ marginRight: "0.5rem" }}
+                  ></i>
+                  {
+                    lang.configuration.sections[0].compass.values[
+                      props.viewConfig.compass ? 1 : 0
+                    ]
+                  }
+                </span>
+                <div style={{ margin: "1rem 0", maxWidth: "30vw" }}>
+                  {lang.configuration.sections[0].compass.description}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* ================================================================= */}
           <h3 data-aos="zoom-in">{lang.configuration.sections[1].title}</h3>
           <div

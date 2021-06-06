@@ -34,6 +34,7 @@ function App() {
     fov: 60, // [20 ... 100]
     pointQuality: 0, // 0 - Standard (square), 1 - High (circle)
     edl: false, // false - no, true - yes
+    compass: true, // false - no, true - yes
   });
   const [GPU, setGPU] = useState({
     isMobile: "-",
@@ -147,7 +148,6 @@ function App() {
                 activeBB={activeBB}
                 viewType={viewType}
                 viewConfig={viewConfig}
-                lang={localStorage.getItem("lang") || "ca"}
               />
             </Route>
           </Switch>

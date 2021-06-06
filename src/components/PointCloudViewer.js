@@ -24,15 +24,13 @@ export default class PointCloudViewer extends React.Component {
     this.speedSpanStyle = {
       position: "absolute",
       top: "0%",
-      right: "0.25rem",
+      right: this.props.viewConfig.compass ? "5rem" : "0.25rem",
       zIndex: "3",
       color: "white",
       backgroundColor: "rgba(15, 15, 15, 0.75)",
       padding: "0 0.25rem",
       boxShadow: "0px 0px 8px 8px rgba(15, 15, 15, 0.75)",
     };
-
-    window.addEventListener("wheel", (e) => this.forceUpdate());
 
     // Did the user select only one room?
     // Returns [bool, int] representing
@@ -85,7 +83,9 @@ export default class PointCloudViewer extends React.Component {
 
     this.viewer.loadGUI(() => {
       // Set language, no catalan for Potree unfortunately :(
-      this.viewer.setLanguage(this.props.lang);
+      this.viewer.setLanguage(
+        this.context[2] === "ca" ? "en" : this.context[2]
+      );
       window.$("#menu_appearance").next().show();
       window.$("#menu_tools").next().show();
       window.$("#menu_clipping").next().show();
@@ -218,6 +218,8 @@ export default class PointCloudViewer extends React.Component {
         });
 
         document.getElementById("potree_render_area").focus();
+        window.addEventListener("wheel", (e) => this.forceUpdate());
+        this.viewer.compass.setVisible(this.props.viewConfig.compass);
       },
       (e) => console.err("ERROR: ", e)
     );
@@ -227,3 +229,7 @@ export default class PointCloudViewer extends React.Component {
     // If you want to update Potree View/other element upon render(), put it here
   }
 }
+
+// Set contextType in order to access LangContext
+// outside of render(), i.e: in lifecycle methods
+PointCloudViewer.contextType = LangContext;

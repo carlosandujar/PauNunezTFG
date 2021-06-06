@@ -43,7 +43,6 @@ const HOME_BG = shuffleArray([
   home_bg9,
   home_bg10,
 ]);
-console.log(HOME_BG);
 
 const gmapsLink =
   "https://www.google.com/maps/place/Esgl%C3%A9sia+de+Sant+Quirze+de+Pedret/@42.1105096,1.8126689,12z/data=!4m5!3m4!1s0x12a5091b8879abd5:0xa366ebababe0f30!8m2!3d42.1074712!4d1.883649";

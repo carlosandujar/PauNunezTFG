@@ -26,4 +26,7 @@ body {
 
   /*! Important! ha calgut comentar el següent a potree_libs/potree/potree.css: */
   /*! body{ position: absolute, overflow: hidden } */
+  
+  /*! Important! ha calgut canviar el següent a potree_libs/potree/potree.js: (line 702 42) */
+  /*! this.dom.css("transform", `rotateZ(calc(${-azimuth}rad + 130deg) */
 }
