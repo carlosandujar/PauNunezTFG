@@ -41,6 +41,8 @@ function App() {
     gpu: "-",
     tier: "-",
   });
+  const [memory, setMemory] = useState("-");
+  const [cpuCores, setCpuCores] = useState("-");
 
   // AOS (Animate on Scroll) initialization
   useEffect(() => {
@@ -59,13 +61,15 @@ function App() {
     document.body.style.backgroundColor = !theme ? "rgb(15, 15, 15)" : "white";
   }, [theme]);
 
-  // Get GPU info @ mount
+  // Get GPU and other hardware info @ mount
   useEffect(() => {
     async function getGPU() {
       const gpu = await getGPUTier();
       setGPU(gpu);
     }
     getGPU();
+    setMemory(navigator.deviceMemory);
+    setCpuCores(navigator.hardwareConcurrency);
   }, []);
 
   // Update appearance settings (point budget, splat quality, etc)
@@ -130,6 +134,8 @@ function App() {
                   setViewType={(vt) => setViewType(vt)}
                 />
                 <Configuration
+                  memory={memory}
+                  cpuCores={cpuCores}
                   GPU={GPU}
                   theme={theme}
                   viewConfig={viewConfig}

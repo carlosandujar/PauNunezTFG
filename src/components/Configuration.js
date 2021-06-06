@@ -48,6 +48,15 @@ const Configuration = (props) => {
     alignItems: "center",
   };
 
+  const printRAM = (mem, l) => {
+    const msg = {
+      ca: `Al menys ${mem} GB`,
+      es: `Por lo menos ${mem} GB`,
+      en: `At least ${mem} GB`,
+    };
+    return msg[l];
+  };
+
   return (
     <LangContext.Consumer>
       {([lang, changeLang, l]) => (
@@ -231,6 +240,18 @@ const Configuration = (props) => {
               lang.configuration.sections[1].specs.categoriaValue[
                 props.GPU.tier - 1
               ]
+            }`}</span>
+            <br></br>
+            <span>{`${lang.configuration.sections[1].specs.RAM}: ${
+              props.memory
+                ? printRAM(props.memory, l)
+                : lang.configuration.sections[1].specs.RAMError
+            }`}</span>
+            <br></br>
+            <span>{`${lang.configuration.sections[1].specs.CPU}: ${
+              props.cpuCores
+                ? props.cpuCores
+                : lang.configuration.sections[1].specs.RAMError
             }`}</span>
           </div>
 

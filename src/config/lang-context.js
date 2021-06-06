@@ -145,6 +145,9 @@ export const langs = {
             gpu: "Targeta gràfica",
             categoria: "Categoria",
             categoriaValue: ["Baixa", "Mitjana", "Alta"],
+            RAM: "Memòria RAM",
+            RAMError: "No disponible en aquest navegador",
+            CPU: "# Nuclis CPU",
           },
           pointBudget: {
             title: "Nombre de punts màxim",
@@ -349,6 +352,9 @@ export const langs = {
             gpu: "Tarjeta gráfica",
             categoria: "Categoría",
             categoriaValue: ["Baja", "Media", "Alta"],
+            RAM: "Memoria RAM",
+            RAMError: "No disponible en este navegador",
+            CPU: "# Núcleos CPU",
           },
           pointBudget: {
             title: "Número máximo de puntos",
@@ -553,6 +559,9 @@ export const langs = {
             gpu: "Graphics card",
             categoria: "Category",
             categoriaValue: ["Low", "Medium", "High"],
+            RAM: "RAM",
+            RAMError: "Unavailable in this browser",
+            CPU: "# CPU cores",
           },
           pointBudget: {
             title: "Point budget",
