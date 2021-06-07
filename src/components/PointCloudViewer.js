@@ -210,88 +210,66 @@ export default class PointCloudViewer extends React.Component {
 
         // ========================== CAMERA ANIMATIONS ========================== //
 
-        if (this.props.viewType === ViewType.ROUTE_EXTERIOR) {
-          const animation = new Potree.CameraAnimation(window.viewer);
+        if (this.props.viewType >= ViewType.ROUTE_FULL) {
+          const animationExterior = new Potree.CameraAnimation(window.viewer);
+          const animationApsidiole = new Potree.CameraAnimation(window.viewer);
+          const animationInterior = new Potree.CameraAnimation(window.viewer);
+
+          // Exterior
           for (let i = 0; i < AnimationRoutes.exterior.positions.length; i++) {
-            const cp = animation.createControlPoint();
+            const cp = animationExterior.createControlPoint();
             cp.position.set(...AnimationRoutes.exterior.positions[i]);
             cp.target.set(...AnimationRoutes.exterior.targets[i]);
           }
-          animation.visible = false;
-          animation.duration = AnimationRoutes.exterior.duration;
-          scene.addCameraAnimation(animation);
-          scene.cameraAnimations[0].play();
-          // setTimeout(() => {
-          //   scene.cameraAnimations = [];
-          // }, 5000);
-        }
-
-        if (this.props.viewType === ViewType.ROUTE_APSIDIOLE) {
-          const animation = new Potree.CameraAnimation(window.viewer);
+          // Apsidiole
           for (let i = 0; i < AnimationRoutes.apsidiole.positions.length; i++) {
-            const cp = animation.createControlPoint();
+            const cp = animationApsidiole.createControlPoint();
             cp.position.set(...AnimationRoutes.apsidiole.positions[i]);
             cp.target.set(...AnimationRoutes.apsidiole.targets[i]);
           }
-          animation.visible = false;
-          animation.duration = AnimationRoutes.apsidiole.duration;
-          scene.addCameraAnimation(animation);
-          scene.cameraAnimations[0].play();
+          // Interior
+          for (let i = 0; i < AnimationRoutes.interior.positions.length; i++) {
+            const cp = animationInterior.createControlPoint();
+            cp.position.set(...AnimationRoutes.interior.positions[i]);
+            cp.target.set(...AnimationRoutes.interior.targets[i]);
+          }
+
+          animationExterior.visible = false;
+          animationApsidiole.visible = false;
+          animationInterior.visible = false;
+
+          animationExterior.duration = AnimationRoutes.exterior.duration;
+          animationApsidiole.duration = AnimationRoutes.apsidiole.duration;
+          animationInterior.duration = AnimationRoutes.interior.duration;
+
+          scene.addCameraAnimation(animationExterior); // [0]
+          scene.addCameraAnimation(animationApsidiole); // [1]
+          scene.addCameraAnimation(animationInterior); // [2]
+
+          if (this.props.viewType === ViewType.ROUTE_EXTERIOR) {
+            scene.cameraAnimations[0].play();
+          } //
+          else if (this.props.viewType === ViewType.ROUTE_APSIDIOLE) {
+            scene.cameraAnimations[1].play();
+          } //
+          else if (this.props.viewType === ViewType.ROUTE_INTERIOR) {
+            // Interior + Apsidiole
+            scene.cameraAnimations[2].play();
+            setTimeout(() => {
+              scene.cameraAnimations[1].play();
+            }, AnimationRoutes.interior.duration * 1e3);
+          } //
+          else {
+            // Exterior + Interior + Apsidiole
+            scene.cameraAnimations[0].play();
+            setTimeout(() => {
+              scene.cameraAnimations[2].play();
+            }, AnimationRoutes.exterior.duration * 1e3);
+            setTimeout(() => {
+              scene.cameraAnimations[1].play();
+            }, (AnimationRoutes.exterior.duration + AnimationRoutes.interior.duration) * 1e3);
+          }
         }
-
-        // for (let i = 0; i < scene.cameraAnimations.length; i++) {
-        //   console.log(scene.cameraAnimations[i]);
-        // }
-
-        // const animation = new Potree.CameraAnimation(window.viewer);
-        // const animationPositions = [
-        //   [-3.47, 14.931, 6.586],
-        //   [-13.259, 7.903, 10.499],
-        //   [-12.744, -7.151, 12.212],
-        // ];
-        // const animationTargets = [
-        //   [2.076, 1.095, 4.916],
-        //   [-3.904, 1.705, 5.842],
-        //   [-3.387, -1.821, 6.586],
-        // ];
-
-        // for (let i = 0; i < animationPositions.length; i++) {
-        //   const cp = animation.createControlPoint();
-        //   cp.position.set(...animationPositions[i]);
-        //   cp.target.set(...animationTargets[i]);
-        // }
-
-        // animation.visible = false;
-        // animation.duration = 5;
-
-        // scene.addCameraAnimation(animation);
-
-        // const animation2 = new Potree.CameraAnimation(window.viewer);
-        // const animationPositions2 = [
-        //   [3.222, 2.375, 5.016],
-        //   [-0.681, -0.65, 5.06],
-        //   [-3.685, 3.133, 4.96],
-        // ];
-        // const animationTargets2 = [
-        //   [2.566, 0.878, 4.207],
-        //   [-3.904, 1.705, 5.842],
-        //   [-7.427, 0.346, 5.585],
-        // ];
-
-        // for (let i = 0; i < animationPositions.length; i++) {
-        //   const cp = animation2.createControlPoint();
-        //   cp.position.set(...animationPositions2[i]);
-        //   cp.target.set(...animationTargets2[i]);
-        // }
-
-        // animation2.visible = false;
-        // animation2.duration = 3;
-
-        // scene.addCameraAnimation(animation2);
-
-        // console.log(scene.cameraAnimations);
-        // scene.cameraAnimations[0].play();
-        // setTimeout(() => scene.cameraAnimations[1].play(), 5500);
 
         // ========================== STATE & OTHERS ========================== //
 
