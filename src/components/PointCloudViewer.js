@@ -221,7 +221,28 @@ export default class PointCloudViewer extends React.Component {
           animation.duration = AnimationRoutes.exterior.duration;
           scene.addCameraAnimation(animation);
           scene.cameraAnimations[0].play();
+          // setTimeout(() => {
+          //   scene.cameraAnimations = [];
+          // }, 5000);
         }
+
+        if (this.props.viewType === ViewType.ROUTE_APSIDIOLE) {
+          const animation = new Potree.CameraAnimation(window.viewer);
+          for (let i = 0; i < AnimationRoutes.apsidiole.positions.length; i++) {
+            const cp = animation.createControlPoint();
+            cp.position.set(...AnimationRoutes.apsidiole.positions[i]);
+            cp.target.set(...AnimationRoutes.apsidiole.targets[i]);
+          }
+          animation.visible = false;
+          animation.duration = AnimationRoutes.apsidiole.duration;
+          scene.addCameraAnimation(animation);
+          scene.cameraAnimations[0].play();
+        }
+
+        // for (let i = 0; i < scene.cameraAnimations.length; i++) {
+        //   console.log(scene.cameraAnimations[i]);
+        // }
+
         // const animation = new Potree.CameraAnimation(window.viewer);
         // const animationPositions = [
         //   [-3.47, 14.931, 6.586],
