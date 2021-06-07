@@ -5,6 +5,7 @@ import BoundingBoxes, {
   ViewType,
   Cameras,
   CleanUpBoundingBoxes,
+  AnimationRoutes,
 } from "../config/viewer-variables";
 
 // import vanillaJS Potree libs, /!\ would be best with proper ES6 import
@@ -58,10 +59,10 @@ export default class PointCloudViewer extends React.Component {
             <div id="potree_render_area" ref={this.potreeContainerDiv}></div>
             <div id="potree_sidebar_container"> </div>
             <span style={this.speedSpanStyle}>
-              {this.viewer && !this.props.viewConfig.controls
+              {window.viewer && !this.props.viewConfig.controls
                 ? `${
                     lang.pointCloudViewer.speed
-                  } = ${this.viewer.moveSpeed.toFixed(2)}`
+                  } = ${window.viewer.moveSpeed.toFixed(2)}`
                 : ""}
             </span>
           </div>
@@ -73,30 +74,30 @@ export default class PointCloudViewer extends React.Component {
   componentDidMount() {
     // initialize Potree viewer
     const viewerElem = this.potreeContainerDiv.current;
-    this.viewer = new Potree.Viewer(viewerElem);
+    window.viewer = new Potree.Viewer(viewerElem);
 
-    this.viewer.setEDLEnabled(this.props.viewConfig.edl);
-    this.viewer.setFOV(this.props.viewConfig.fov || 60);
-    this.viewer.setPointBudget(this.props.viewConfig.pointBudget || 1e6);
-    this.viewer.loadSettingsFromURL();
-    // this.viewer.showAbout();
+    window.viewer.setEDLEnabled(this.props.viewConfig.edl);
+    window.viewer.setFOV(this.props.viewConfig.fov || 60);
+    window.viewer.setPointBudget(this.props.viewConfig.pointBudget || 1e6);
+    window.viewer.loadSettingsFromURL();
+    // window.viewer.showAbout();
 
-    this.viewer.loadGUI(() => {
+    window.viewer.loadGUI(() => {
       // Set language, no catalan for Potree unfortunately :(
-      this.viewer.setLanguage(
+      window.viewer.setLanguage(
         this.context[2] === "ca" ? "en" : this.context[2]
       );
       window.$("#menu_appearance").next().show();
       window.$("#menu_tools").next().show();
       window.$("#menu_clipping").next().show();
-      // this.viewer.toggleSidebar();
+      // window.viewer.toggleSidebar();
     });
 
     // Load and add point cloud to scene
     let url = `./pointclouds/pedret/model_100_100/metadata.json`;
     Potree.loadPointCloud(url).then(
       (e) => {
-        let scene = this.viewer.scene;
+        let scene = window.viewer.scene;
         let pointcloud = e.pointcloud;
         let material = pointcloud.material;
 
@@ -110,21 +111,23 @@ export default class PointCloudViewer extends React.Component {
         scene.addPointCloud(pointcloud);
 
         // Set navigation controls and movement speed
-        this.viewer.setControls(
+        window.viewer.setControls(
           this.props.viewConfig.controls
-            ? this.viewer.orbitControls
-            : this.viewer.fpControls
+            ? window.viewer.orbitControls
+            : window.viewer.fpControls
         );
-        this.viewer.setMoveSpeed(5);
+        window.viewer.setMoveSpeed(5);
 
         // ========================== CAMERAS ========================== //
 
-        // Set the default camera
-        scene.view.setView(
-          Cameras.defaultCam.pos,
-          Cameras.defaultCam.target,
-          2000
-        );
+        // Set the camera for FULL view
+        if (this.props.viewType === ViewType.FULL) {
+          scene.view.setView(
+            Cameras.defaultCam.pos,
+            Cameras.defaultCam.target,
+            2000
+          );
+        }
 
         // Reset camera for PLANT view
         if (this.props.viewType === ViewType.PLANT) {
@@ -152,11 +155,8 @@ export default class PointCloudViewer extends React.Component {
         // ========================== BOUNDING BOXES ========================== //
 
         // Clean noise under the monument with CleanUpBoundingBoxes
-        // Only for FULL and PLANT views
-        if (
-          this.props.viewType === ViewType.FULL ||
-          this.props.viewType === ViewType.PLANT
-        ) {
+        // For all views except SELECTION
+        if (this.props.viewType !== ViewType.SELECTION) {
           const volume0 = new Potree.BoxVolume();
           const volume1 = new Potree.BoxVolume();
           volume0.name = CleanUpBoundingBoxes[0].name;
@@ -201,25 +201,90 @@ export default class PointCloudViewer extends React.Component {
         }
 
         // Set clipping area for Bounding Boxes
-        // FULL || PLANT -> OUTSIDE, SELECTION -> INSIDE
-        this.viewer.setClipTask(
-          this.props.viewType === ViewType.FULL ||
-            this.props.viewType === ViewType.PLANT
+        // SELECTION -> INSIDE, REST -> OUTSIDE
+        window.viewer.setClipTask(
+          this.props.viewType !== ViewType.SELECTION
             ? Potree.ClipTask.SHOW_OUTSIDE
             : Potree.ClipTask.SHOW_INSIDE
         );
 
+        // ========================== CAMERA ANIMATIONS ========================== //
+
+        if (this.props.viewType === ViewType.ROUTE_EXTERIOR) {
+          const animation = new Potree.CameraAnimation(window.viewer);
+          for (let i = 0; i < AnimationRoutes.exterior.positions.length; i++) {
+            const cp = animation.createControlPoint();
+            cp.position.set(...AnimationRoutes.exterior.positions[i]);
+            cp.target.set(...AnimationRoutes.exterior.targets[i]);
+          }
+          animation.visible = false;
+          animation.duration = AnimationRoutes.exterior.duration;
+          scene.addCameraAnimation(animation);
+          scene.cameraAnimations[0].play();
+        }
+        // const animation = new Potree.CameraAnimation(window.viewer);
+        // const animationPositions = [
+        //   [-3.47, 14.931, 6.586],
+        //   [-13.259, 7.903, 10.499],
+        //   [-12.744, -7.151, 12.212],
+        // ];
+        // const animationTargets = [
+        //   [2.076, 1.095, 4.916],
+        //   [-3.904, 1.705, 5.842],
+        //   [-3.387, -1.821, 6.586],
+        // ];
+
+        // for (let i = 0; i < animationPositions.length; i++) {
+        //   const cp = animation.createControlPoint();
+        //   cp.position.set(...animationPositions[i]);
+        //   cp.target.set(...animationTargets[i]);
+        // }
+
+        // animation.visible = false;
+        // animation.duration = 5;
+
+        // scene.addCameraAnimation(animation);
+
+        // const animation2 = new Potree.CameraAnimation(window.viewer);
+        // const animationPositions2 = [
+        //   [3.222, 2.375, 5.016],
+        //   [-0.681, -0.65, 5.06],
+        //   [-3.685, 3.133, 4.96],
+        // ];
+        // const animationTargets2 = [
+        //   [2.566, 0.878, 4.207],
+        //   [-3.904, 1.705, 5.842],
+        //   [-7.427, 0.346, 5.585],
+        // ];
+
+        // for (let i = 0; i < animationPositions.length; i++) {
+        //   const cp = animation2.createControlPoint();
+        //   cp.position.set(...animationPositions2[i]);
+        //   cp.target.set(...animationTargets2[i]);
+        // }
+
+        // animation2.visible = false;
+        // animation2.duration = 3;
+
+        // scene.addCameraAnimation(animation2);
+
+        // console.log(scene.cameraAnimations);
+        // scene.cameraAnimations[0].play();
+        // setTimeout(() => scene.cameraAnimations[1].play(), 5500);
+
+        // ========================== STATE & OTHERS ========================== //
+
         // This forces the camera to fit the scene in the screen
         // Disable to define a custom camera position and lookAt
-        // this.viewer.fitToScreen();
+        // window.viewer.fitToScreen();
 
         this.setState({
-          speed: this.viewer.getMoveSpeed(),
+          speed: window.viewer.getMoveSpeed(),
         });
 
         document.getElementById("potree_render_area").focus();
         window.addEventListener("wheel", (e) => this.forceUpdate());
-        this.viewer.compass.setVisible(this.props.viewConfig.compass);
+        window.viewer.compass.setVisible(this.props.viewConfig.compass);
       },
       (e) => console.err("ERROR: ", e)
     );

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+
 import { LangContext } from "../config/lang-context";
 import { ViewType } from "../config/viewer-variables";
 import "./Models.css";
@@ -19,6 +23,15 @@ const Models = (props) => {
       ? "rgba(15, 15, 15, 0.75)"
       : "rgba(255, 255, 255, 0.75)",
   };
+  const dropDownButtonStyle = {
+    color: !props.theme ? "white" : "black",
+  };
+
+  // Workaround
+  useEffect(() => {
+    let b = document.getElementById("automatic-routes-button");
+    b.style.color = !props.theme ? "white" : "black";
+  }, [props.theme]);
 
   return (
     <LangContext.Consumer>
@@ -68,6 +81,83 @@ const Models = (props) => {
                   {lang.models.buttons[1]}
                 </div>
               </Link>
+              <DropdownButton
+                className="automatic-routes-button"
+                style={modelsButtonStyle}
+                as={ButtonGroup}
+                key={"left"}
+                id={`automatic-routes-button`}
+                drop={"left"}
+                variant="primary"
+                title={
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <i className="fas fa-route"></i>
+                    <span>{lang.models.buttons[2]}</span>
+                  </div>
+                }
+              >
+                <Dropdown.Item
+                  eventKey="1"
+                  as={() => (
+                    <Link
+                      style={dropDownButtonStyle}
+                      className="dropdown-item"
+                      to="/PointCloudViewer"
+                      onClick={() => props.setViewType(ViewType.ROUTE_FULL)}
+                    >
+                      {lang.models.routes[0]}
+                    </Link>
+                  )}
+                ></Dropdown.Item>
+                <Dropdown.Item
+                  eventKey="2"
+                  as={() => (
+                    <Link
+                      style={dropDownButtonStyle}
+                      className="dropdown-item"
+                      to="/PointCloudViewer"
+                      onClick={() => props.setViewType(ViewType.ROUTE_EXTERIOR)}
+                    >
+                      {lang.models.routes[1]}
+                    </Link>
+                  )}
+                ></Dropdown.Item>
+                <Dropdown.Item
+                  eventKey="3"
+                  as={() => (
+                    <Link
+                      style={dropDownButtonStyle}
+                      className="dropdown-item"
+                      to="/PointCloudViewer"
+                      onClick={() => props.setViewType(ViewType.ROUTE_INTERIOR)}
+                    >
+                      {lang.models.routes[2]}
+                    </Link>
+                  )}
+                ></Dropdown.Item>
+                <Dropdown.Item
+                  eventKey="4"
+                  as={() => (
+                    <Link
+                      style={dropDownButtonStyle}
+                      className="dropdown-item"
+                      to="/PointCloudViewer"
+                      onClick={() =>
+                        props.setViewType(ViewType.ROUTE_APSIDIOLE)
+                      }
+                    >
+                      {lang.models.routes[3]}
+                    </Link>
+                  )}
+                ></Dropdown.Item>
+              </DropdownButton>
               <Link
                 to={anyActiveBB ? "/PointCloudViewer" : ""}
                 onClick={() =>
@@ -92,7 +182,7 @@ const Models = (props) => {
                     }}
                   >
                     <i className="fas fa-list-ol"></i>
-                    {lang.models.buttons[2]}
+                    {lang.models.buttons[3]}
                   </div>
                 </OverlayTrigger>
               </Link>

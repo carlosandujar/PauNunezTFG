@@ -94,7 +94,13 @@ export const langs = {
     },
     models: {
       title: "Model 3D",
-      buttons: ["Model complet", "Vista en planta", "Veure selecció"],
+      buttons: [
+        "Model complet",
+        "Vista en planta",
+        "Rutes guiades",
+        "Veure selecció",
+      ],
+      routes: ["Completa", "Exterior", "Interior", "Absidiola sud"],
       checkboxes: [
         "A - Entrada",
         "B - Nau principal",
@@ -301,7 +307,13 @@ export const langs = {
     },
     models: {
       title: "Modelo 3D",
-      buttons: ["Modelo completo", "Vista en planta", "Ver selección"],
+      buttons: [
+        "Modelo completo",
+        "Vista en planta",
+        "Rutas guiadas",
+        "Ver selección",
+      ],
+      routes: ["Completa", "Exterior", "Interior", "Absidiolo sur"],
       checkboxes: [
         "A - Entrada",
         "B - Nave principal",
@@ -508,7 +520,13 @@ export const langs = {
     },
     models: {
       title: "3D Model",
-      buttons: ["Full model", "Floor plan view ", "Display selection"],
+      buttons: [
+        "Full model",
+        "Floor plan view ",
+        "Guided routes",
+        "Display selection",
+      ],
+      routes: ["Full", "Exterior", "Interior", "Southern apsidiole"],
       checkboxes: [
         "A - Entrance",
         "B - Principal Nave",

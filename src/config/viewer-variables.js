@@ -2,6 +2,10 @@ const ViewType = Object.freeze({
   FULL: 0,
   PLANT: 1,
   SELECTION: 2,
+  ROUTE_FULL: 3,
+  ROUTE_EXTERIOR: 4,
+  ROUTE_INTERIOR: 5,
+  ROUTE_APSIDIOLE: 6,
 });
 
 const BoundingBoxes = [
@@ -141,7 +145,32 @@ const CleanUpBoundingBoxes = [
   },
 ];
 
+const AnimationRoutes = {
+  exterior: {
+    positions: [
+      [4.301, 18.667, 9.064],
+      [2.937, 16.407, 7.356],
+      [-14.88, 6.714, 11.222],
+      [-5.072, -13.496, 12.957],
+      [15.491, -3.73, 11.719],
+      [9.314, 13.92, 8.871],
+      [-2.008, 10.162, 4.648],
+    ],
+    targets: [
+      [0.682, 4.643, 5.163],
+      [0.16, 1.812, 5.291],
+      [-3.365, -0.034, 4.377],
+      [0.523, -1.73, 5.525],
+      [2.919, 1.304, 5.269],
+      [0.692, 2.374, 4.704],
+      [4.586, -3.242, 3.284],
+    ],
+    duration: 40,
+  },
+};
+
 export default BoundingBoxes;
 export { ViewType };
 export { Cameras };
 export { CleanUpBoundingBoxes };
+export { AnimationRoutes };

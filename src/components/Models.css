@@ -9,7 +9,59 @@
 }
 .models-wrapper a {
   text-decoration: none;
-  height: 30%;
+  height: 22.5%;
+}
+
+.automatic-routes-button {
+  text-decoration: none;
+  height: 22.5%;
+}
+.automatic-routes-button i {
+  margin-right: 1rem;
+  font-size: 2.5rem;
+}
+.automatic-routes-button a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+#automatic-routes-button {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  min-height: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: transparent;
+  transition: none;
+}
+#automatic-routes-button:hover {
+  text-shadow: 0px 0px 10px red;
+  box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.5);
+}
+#automatic-routes-button::before {
+  content: none;
+}
+#automatic-routes-button:focus {
+  /* box-shadow: none; */
+  border-color: transparent;
+}
+
+.dropdown-menu {
+  background-color: transparent;
+  border: none;
+}
+.dropdown-item {
+  text-align: right;
+  background-color: transparent;
+  font-size: 1.25rem;
+}
+.dropdown-item:hover {
+  box-shadow: 0px 0px 1px 1px rgba(255, 0, 0, 0.35);
+  background-color: rgba(255, 0, 0, 0.35);
 }
 
 .models-button {

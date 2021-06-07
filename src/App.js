@@ -76,7 +76,7 @@ function App() {
   // when GPU info is already available
   useEffect(() => {
     if (GPU.tier !== "-") {
-      const values = [900e3, 4e6, 8e6];
+      const values = [900e3, 4e6, 700e3];
       setViewConfig((prev) => ({
         ...prev,
         pointBudget: values[GPU.tier - 1],
