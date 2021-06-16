@@ -95,6 +95,15 @@ const Footer = (props) => {
                   >
                     <span>{lang.footer.supervisors.imanol}</span>
                   </a>
+                  <br></br>
+                  <span>{lang.footer.model[0]}</span>
+                  <a
+                    href={`https://scholar.google.es/citations?user=5b5lpdjyjg0C&hl=es`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>{lang.footer.model[1]}</span>
+                  </a>
                 </div>
                 {lang.footer.acknowledgements.map((text, i) => (
                   <span key={i} style={{ maxWidth: "60%" }}>

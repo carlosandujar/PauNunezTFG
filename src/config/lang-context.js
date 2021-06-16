@@ -196,6 +196,7 @@ export const langs = {
         text: "Projecte supervisat per ",
         conj: " i ",
       },
+      model: ["Model digital 3D per ", "Marc Comino"],
       acknowledgements: [
         `Adquisició dels models 3D de Sant Quirze de Pedret finançada per Pirineus Romànics, Espai de Confluències Artísiques II (PRECA II)
         projecte (HAR2017-84451-P, Universitat de Barcelona)`,
@@ -409,6 +410,7 @@ export const langs = {
         text: "Proyecto supervisado por ",
         conj: " e ",
       },
+      model: ["Modelo digital 3D por ", "Marc Comino"],
       acknowledgements: [
         `Adquisición de los modelos 3D de Sant Quirze de Pedret financiada por Pirineos Románicos, Espacio de Confluencias Artísticas II (PRECA II)
         proyecto (HAR2017-84451-P, Universitat de Barcelona)`,
@@ -622,6 +624,7 @@ export const langs = {
         text: "Project supervision by ",
         conj: " and ",
       },
+      model: ["3D digital model by ", "Marc Comino"],
       acknowledgements: [
         `Acquisition of the 3D models of St. Quirze de Pedret funded by the
         Romanesque Pyrenees, Space of Artistic Confluences II (PRECA II) project
