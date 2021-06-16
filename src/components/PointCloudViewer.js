@@ -6,6 +6,7 @@ import BoundingBoxes, {
   Cameras,
   CleanUpBoundingBoxes,
   AnimationRoutes,
+  Annotations,
 } from "../config/viewer-variables";
 
 // import vanillaJS Potree libs, /!\ would be best with proper ES6 import
@@ -120,8 +121,8 @@ export default class PointCloudViewer extends React.Component {
 
         // ========================== CAMERAS ========================== //
 
-        // Set the camera for FULL view
-        if (this.props.viewType === ViewType.FULL) {
+        // Set the default camera but not for Animated Routes
+        if (this.props.viewType < ViewType.ROUTE_FULL) {
           scene.view.setView(
             Cameras.defaultCam.pos,
             Cameras.defaultCam.target,
@@ -207,6 +208,11 @@ export default class PointCloudViewer extends React.Component {
             ? Potree.ClipTask.SHOW_OUTSIDE
             : Potree.ClipTask.SHOW_INSIDE
         );
+
+        // ========================== ANNOTATIONS  ========================== //
+        Annotations.forEach((a) => {
+          scene.annotations.add(new Potree.Annotation(a));
+        });
 
         // ========================== CAMERA ANIMATIONS ========================== //
 
