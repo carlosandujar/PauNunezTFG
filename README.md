@@ -1,10 +1,10 @@
-<div style="text-align:center">
-    <img src="./public/logo.png" style="width:150px; height:150px;"/>
-</div>
+<p align="center">
+    <img src="./public/logo.png" width=150 height=150">
+</p>
 
-<div style="text-align:center">
-    <h1>TFG - Treball de Final de Grau</h1>
-</div>
+<h1 align="center">
+TFG - Treball de Final de Grau
+</h1>
 
 ## Exploració Interactiva de Models de Patrimoni Cultural
 
