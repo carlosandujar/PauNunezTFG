@@ -600,7 +600,7 @@ export const langs = {
           title: "Architecture",
           par: [
             `The original church has a pre-romanesque style, consisting of only one nave (the current central nave) with a trapezoidal apse, dated in the 9th century. There was once a door, non-existent today, facing the west side. The following century the church was extended to three naves, adding two lateral naves, one at each side of the principal nave. These secondary naves are finished with horseshoe arch plant apsidioles. The apse and apsidioles are facing east and have arches supported on capitals and columns. The naves are at different heights due to the building being on uneven terrain, as it lays over a tilted stone channel (possibly where the name "Pedret" originates, [pedra means stone in catalan]), with the north nave being the most raised one.`,
-            `Not much is conserved from the south nave, just a small antechamber adjacent to the apsidiole. The rest was replaced in the 18th century by a bell tower that later collapsed (probably during the 15th century earthquakes) and by a porch that covers the original romanesque door. This door is the main one and currently the only access to the monument. It's formed by flat archivolts resting on impost lines, flanked by capitals decorated and sustained by a strigilated shank (west) and a solomonic one (east), both sitting on bases.`,
+            `Not much is conserved from the south nave, just a small antechamber adjacent to the apsidiole. The rest was replaced in the 13th century by a bell tower that later collapsed (probably during the 15th century earthquakes) and by a porch that covers the original romanesque door. This door is the main one and currently the only access to the monument. It's formed by flat archivolts resting on impost lines, flanked by capitals decorated and sustained by a strigilated shank (west) and a solomonic one (east), both sitting on bases.`,
             `In the 18th century, an espadrille was added to the west side, but it had to be demolished during the last restoration due to its disrepair. During the transition from pre-romanesque to romanesque, the gabled wooden roof was replaced by the traditional stone barrel vault. This change forced to bolster the walls of the central nave in order to be capable of holding the new, much heavier roof.`,
           ],
         },
@@ -796,72 +796,75 @@ export const langs = {
         },
         {
           title: `West door`,
-          description: `Durante la época prerrománica, en la cara oeste de la nave principal había una
-          puerta. Hoy día esta puerta ya no existe.`,
+          description: `During the pre-romanesque era, there was a door on the west side of the 
+          principal nave. It doesn't exist anymore today.`,
         },
         {
-          title: `Cauce de piedras`,
-          description: `Las naves son a diferentes alturas, ya que la iglesia se encuentra en desnivel 
-          porque está situada en un cauce de piedras (posiblemente de aquí el nombre de "Pedret") 
-          inclinada, siendo la nave norte la más elevada y la nave sur la más baja.`,
+          title: `Stone channel`,
+          description: `The naves are at different heights due to the building being on uneven terrain, 
+          as it lays over a tilted stone channel (possibly where the name "Pedret" originates, 
+          [pedra means stone in catalan]), with the north nave being the most raised one and the 
+          southern the lowest.`,
         },
         {
-          title: `Entrada`,
-          description: `Un porche da cobertura a la portada románica original, la puerta principal y único 
-          acceso actualmente al monumento. 
+          title: `Entrance`,
+          description: `A porch covers the original romanesque door, the main entrance and only 
+          access to the monument nowadays. 
           <br></br>
-          Está formada por arquivoltas lisas apoyadas en líneas de imposta, flanqueadas por capiteles 
-          decorados y sostenidos por un fuste estrigilado (oeste) y uno salomónico (este), ambos sentados 
-          en bases.`,
+          It's formed by flat archivolts resting on impost lines, flanked by capitals decorated 
+          and sustained by a strigilated shank (west) and a solomonic one (east), 
+          both sitting on bases.`,
         },
         {
-          title: `Tejado`,
-          description: `Durante el cambio de etapa de estilo prerrománico a románico, se sustituyó el 
-          tejado de madera a dos aguas por la tradicional bóveda de cañón de piedra.
+          title: `Roof`,
+          description: `During the transition from pre-romanesque to romanesque, the gabled wooden 
+          roof was replaced by the traditional stone barrel vault.
           <br></br>
-          Este cambio obligó a reforzar los muros de la nave central para que pudiera soportar el nuevo 
-          tejado, que era mucho más pesado.`,
+          This change forced to bolster the walls of the central nave in order to be capable of 
+          holding the new, much heavier roof.`,
         },
         {
-          title: `Nave principal`,
-          description: `La iglesia original es de estilo prerrománico, de una sola nave,
-          la central, con ábside trapezoidal, del siglo IX.
+          title: `Principal nave`,
+          description: `The original church has a pre-romanesque style, consisting of only one nave, 
+          the central one, with a trapezoidal apse, dated in the 9th century.
           <br></br>
-          El siglo siguiente se realizó la ampliación a las tres naves actuales, añadiendo dos naves 
-          laterales a cada lado de la nave principal.`,
+          The following century the church was extended to three naves, adding two lateral naves, 
+          one at each side of the principal nave.`,
         },
         {
-          title: `Ábside central`,
-          description: `Reproducciones de las pinturas prerrománicas del siglo X, que son los únicos 
-          restos del mural prerrománico que se han conservado. Actualmente están en el Museu Diocesà 
-          i Comarcal de Solsona (MDCS), desde que se arrancaron en 1937.`,
+          title: `Central apse`,
+          description: `These are reproductions of the pre-romanesque paintings, which date back to the 
+          10th century and are the only pre-romanesque parts of the mural that have been conserved. 
+          Today, they stay in Museu Diocesà i Comarcal de Solsona (MDCS), since they were extracted 
+          in 1937.`,
         },
         {
-          title: `Absidiolo norte`,
-          description: `Reproducción de las pinturas románicas, probablemente del siglo XI, que fueron 
-          extraídas el año 1922 y se conservan actualmente en el 
-          Museu Nacional d'Art de Catalunya (MNAC), en Barcelona. 
+          title: `Northern apsidiole`,
+          description: `These are reproductions of the romanesque paintings, probably from the 11th 
+          century, extracted in 1922 and conserved today in the National Museum of Art of Catalonia 
+          (Museu Nacional d'Art de Catalunya - MNAC) in Barcelona.
           <br></br>
-          En la parte superior hay dibujados los apóstoles y en la parte inferior se encuentra un 
-          cortinaje blanco con ribetes azul oscuro.`,
+          In the upper part, drawings of apostles can be found and, in the lower part, white drapery 
+          with dark blue trimming.`,
         },
         {
-          title: `Absidiolo sur`,
-          description: `Reproducción de las pinturas románicas, probablemente del siglo XI, que fueron 
-          extraídas el año 1922 y se conservan actualmente en el Museu Nacional d'Art de Catalunya (MNAC). 
+          title: `Southern apsidiole`,
+          description: `These are reproductions of the romanesque paintings, probably from the 11th 
+          century, extracted in 1922 and conserved today in the National Museum of Art of Catalonia 
+          (Museu Nacional d'Art de Catalunya - MNAC).
           <br></br>
-          En la zona de la vuelta, una cenefa envuelve una imagen entronizada de la Madre y el Niño. 
-          A la izquierda de la ventana grande se encuentra la parábola de las vírgenes prudentes, y a 
-          la derecha, las vírgenes necias y la personificación de la iglesia.
+          Over the vault area, a border envelops an image of the enthroned Mother and the Child. 
+          To the left of the large window lies the parable of the wise virgins, and to the right, 
+          the foolish virgins and the church's personification.
           <br></br>
-          La parta inferior, hasta las jambas del arco de acceso a la sala, está decorada con patrones 
-          de greca de varios colores y cortinajes blancos con ribetes de motivos florales.`,
+          The lower part, up to the jambs of the arch that gives way to the room, is decorated 
+          with multicolored meander patterns and white drapery trimmed with floral motifs.`,
         },
         {
-          title: `Antesala`,
-          description: `De la nave sur solo se conserva una pequeña antesala contigua al absidiolo. 
-          El resto fue sustituido el siglo XIII por un campanario de torre que cayó, posiblemente 
-          con los terremotos del siglo XV`,
+          title: `Antechamber`,
+          description: `Not much is conserved from the south nave, just a small antechamber adjacent 
+          to the apsidiole. The rest was replaced in the 13th century by a bell tower that later 
+          collapsed, probably during the 15th century earthquakes.`,
         },
       ],
     },

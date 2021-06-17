@@ -306,16 +306,6 @@ const Annotations = [
   },
 ];
 
-/*  >>> Nomes queden les pintures al fresc i traduir-ho tot a lang-context.js
-{
-  position: [],
-  cameraPosition: [],
-  cameraTarget: [],
-  title: ``,
-  description: ``,
-},
-*/
-
 export default BoundingBoxes;
 export { ViewType };
 export { Cameras };
