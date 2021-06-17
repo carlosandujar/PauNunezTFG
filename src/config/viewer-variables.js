@@ -253,70 +253,56 @@ const Annotations = [
     position: [7.599, 12.183, 3.023],
     cameraPosition: [8.409, 14.462, 3.61],
     cameraTarget: [7.013, 10.977, 4.276],
-    title: `< Cap al pont gòtic`,
-    description: `Un camí descendeix cap al pont gòtic de Pedret, un pont de pedra molt ben 
-    conservat que creua el riu Llobregat i duu cap al municipi Berga.`,
   },
   {
     position: [6.721, 2.946, 5.56],
     cameraPosition: [8.895, 6.406, 5.792],
     cameraTarget: [7.315, 1.973, 5.699],
-    title: `Porta oest`,
-    description: `Durant l'epoca prerromànica, a la cara oest de la nau principal hi havia una
-    porta. Avui en dia aquesta porta ja no existeix.`,
   },
   {
     position: [5.769, -6.656, 7.229],
     cameraPosition: [-1.87, -12.226, 11.199],
     cameraTarget: [-0.529, -5.658, 7.898],
-    title: `Llera de pedres`,
-    description: `Les naus són a diferents alçades, ja que l'església es troba en desnivell perquè 
-    està situada a una llera de pedres (possiblement d'aquí el nom de "Pedret") inclinada, 
-    sent la nau nord la més elevada i la nau sud la més baixa.`,
   },
   {
     position: [0.784, 3.334, 4.841],
     cameraPosition: [-2.807, 7.085, 4.351],
     cameraTarget: [-1.035, 6.118, 4.528],
-    title: `Entrada`,
-    description: `Un porxo dóna cobertura a la portada romànica original, la porta principal i únic 
-    accés actualment al monument. 
-    <br></br>
-    Està formada per arquivoltes llises recolzades en línies d'imposta, flanquejades per capitells 
-    decorats i sostinguts per un fust estrigilat (oest) i un de salomònic (est), 
-    ambdós assentats en bases.`,
   },
   {
     position: [2.866, 1.084, 10.082],
     cameraPosition: [5.63, 2.559, 9.641],
     cameraTarget: [3.674, 1.537, 9.197],
-    title: `Teulada`,
-    description: `Durant el canvi d'etapa d'estil preromànic a romànic, es va substituir la teulada 
-    de fusta a dues aigües per la tradicional volta de canó de pedra. 
-    <br></br>
-    Aquest canvi va obligar a reforçar els murs de la nau central per tal de suportar la nova teulada, 
-    que era molt més pesada.`,
   },
   // === Nau principal === //
   {
     position: [3.019, 0.922, 5.56],
     cameraPosition: [5.154, 3.773, 5.63],
     cameraTarget: [3.262, 0.675, 5.316],
-    title: `Nau principal`,
-    description: `L'església original és d'estil preromànic, d'una sola nau, 
-    la central, amb absis trapezoidal, del segle IX. 
-    <br></br>
-    Al segle següent es va realitzar l'ampliació a les tres naus actuals, 
-    afegint dues naus laterals a cada cantó de la nau principal. `,
+  },
+  // === Absis central === //
+  {
+    position: [-6.775, -3.374, 5.768],
+    cameraPosition: [-4.807, -2.401, 6.558],
+    cameraTarget: [-7.857, -3.973, 6.536],
+  },
+  // === Absidiola nord === //
+  {
+    position: [-3.038, -6.599, 6.086],
+    cameraPosition: [0.746, -4.393, 6.145],
+    cameraTarget: [-2.236, -6.08, 5.945],
+  },
+  // === Absidiola sud === //
+  {
+    position: [-6.46, 1.322, 5.376],
+    cameraPosition: [-4.58, 2.453, 4.482],
+    cameraTarget: [-5.818, 1.725, 5.772],
   },
   // === Avantsala === //
   {
     position: [-3.35, 3.33, 5.673],
     cameraPosition: [-2.912, 0.233, 5.681],
     cameraTarget: [-3.782, 3.549, 5.823],
-    title: `Avantsala`,
-    description: `De la nau sud només se'n conserva una petita avantsala contigua a l'absidiola. 
-    La resta va ser substituït al segle XIII per un campanar de torre que va caure, possiblement amb els terratrèmols del segle XV.`,
   },
 ];
 

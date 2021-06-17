@@ -210,7 +210,10 @@ export default class PointCloudViewer extends React.Component {
         );
 
         // ========================== ANNOTATIONS  ========================== //
-        Annotations.forEach((a) => {
+        Annotations.forEach((a, i) => {
+          a.title = this.context[0].pointCloudViewer.annotations[i].title;
+          a.description =
+            this.context[0].pointCloudViewer.annotations[i].description;
           scene.annotations.add(new Potree.Annotation(a));
         });
 

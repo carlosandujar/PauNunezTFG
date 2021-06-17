@@ -208,6 +208,81 @@ export const langs = {
     },
     pointCloudViewer: {
       speed: "Velocitat",
+      annotations: [
+        {
+          title: `< Cap al pont gòtic`,
+          description: `Un camí descendeix cap al pont gòtic de Pedret, un pont de pedra molt ben 
+          conservat que creua el riu Llobregat i duu cap al municipi Berga.`,
+        },
+        {
+          title: `Porta oest`,
+          description: `Durant l'epoca prerromànica, a la cara oest de la nau principal hi havia una
+          porta. Avui en dia aquesta porta ja no existeix.`,
+        },
+        {
+          title: `Llera de pedres`,
+          description: `Les naus són a diferents alçades, ja que l'església es troba en desnivell perquè 
+          està situada a una llera de pedres (possiblement d'aquí el nom de "Pedret") inclinada, 
+          sent la nau nord la més elevada i la nau sud la més baixa.`,
+        },
+        {
+          title: `Entrada`,
+          description: `Un porxo dóna cobertura a la portada romànica original, la porta principal i únic 
+          accés actualment al monument. 
+          <br></br>
+          Està formada per arquivoltes llises recolzades en línies d'imposta, flanquejades per capitells 
+          decorats i sostinguts per un fust estrigilat (oest) i un de salomònic (est), 
+          ambdós assentats en bases.`,
+        },
+        {
+          title: `Teulada`,
+          description: `Durant el canvi d'etapa d'estil preromànic a romànic, es va substituir la teulada 
+          de fusta a dues aigües per la tradicional volta de canó de pedra. 
+          <br></br>
+          Aquest canvi va obligar a reforçar els murs de la nau central per tal de suportar la nova teulada, 
+          que era molt més pesada.`,
+        },
+        {
+          title: `Nau principal`,
+          description: `L'església original és d'estil preromànic, d'una sola nau, 
+          la central, amb absis trapezoidal, del segle IX. 
+          <br></br>
+          Al segle següent es va realitzar l'ampliació a les tres naus actuals, 
+          afegint dues naus laterals a cada cantó de la nau principal. `,
+        },
+        {
+          title: `Absis central`,
+          description: `Reproduccions de les pintures preromàniques del segle X, les úniques restes del mural 
+          preromànic que s'han conservat. Actualment són al Museu Diocesà i Comarcal de Solsona (MDCS), 
+          des que es van arrencar l'any 1937.`,
+        },
+        {
+          title: `Absidiola nord`,
+          description: `Reproducció de les pintures romàniques, probablement del segle XI, que van ser 
+          extretes l'any 1922 i es conserven actualment al Museu Nacional d'Art de Catalunya (MNAC), 
+          a Barcelona. 
+          <br></br>
+          A la part superior hi ha dibuixats els apòstols i a la part inferior s'hi troba 
+          un cortinatge blanc amb rivets blau fosc.`,
+        },
+        {
+          title: `Absidiola sud`,
+          description: `Reproducció de les pintures romàniques, probablement del segle XI, que van ser 
+          extretes l'any 1922 i es conserven actualment al Museu Nacional d'Art de Catalunya (MNAC). 
+          <br></br>
+          A la zona de la volta, una sanefa envolta una imatge entronitzada de la Mare i el Nen. 
+          A l'esquerra de la finestra gran s'hi troba la paràbola de les verges prudents, i a la dreta, 
+          les verges nècies i la personificació de l'església. 
+          <br></br>
+          La part inferior, fins als brancals de l'arc d'accés a la sala, està decorada amb patrons de 
+          greca de diversos colors i cortinatges blancs amb rivets de motius florals.`,
+        },
+        {
+          title: `Avantsala`,
+          description: `De la nau sud només se'n conserva una petita avantsala contigua a l'absidiola. 
+          La resta va ser substituït al segle XIII per un campanar de torre que va caure, possiblement amb els terratrèmols del segle XV.`,
+        },
+      ],
     },
   },
   es: {
@@ -422,6 +497,82 @@ export const langs = {
     },
     pointCloudViewer: {
       speed: "Velocidad",
+      annotations: [
+        {
+          title: `< Hacia el puente gótico`,
+          description: `Un camino desciende hacia el puente gótico de Pedret, un puente de piedra muy bien 
+          conservado que cruza el río Llobregat y lleva hacia el municipio de Berga.`,
+        },
+        {
+          title: `Puerta oeste`,
+          description: `Durante la época prerrománica, en la cara oeste de la nave principal había una
+          puerta. Hoy día esta puerta ya no existe.`,
+        },
+        {
+          title: `Cauce de piedras`,
+          description: `Las naves son a diferentes alturas, ya que la iglesia se encuentra en desnivel 
+          porque está situada en un cauce de piedras (posiblemente de aquí el nombre de "Pedret") 
+          inclinada, siendo la nave norte la más elevada y la nave sur la más baja.`,
+        },
+        {
+          title: `Entrada`,
+          description: `Un porche da cobertura a la portada románica original, la puerta principal y único 
+          acceso actualmente al monumento. 
+          <br></br>
+          Está formada por arquivoltas lisas apoyadas en líneas de imposta, flanqueadas por capiteles 
+          decorados y sostenidos por un fuste estrigilado (oeste) y uno salomónico (este), ambos sentados 
+          en bases.`,
+        },
+        {
+          title: `Tejado`,
+          description: `Durante el cambio de etapa de estilo prerrománico a románico, se sustituyó el 
+          tejado de madera a dos aguas por la tradicional bóveda de cañón de piedra.
+          <br></br>
+          Este cambio obligó a reforzar los muros de la nave central para que pudiera soportar el nuevo 
+          tejado, que era mucho más pesado.`,
+        },
+        {
+          title: `Nave principal`,
+          description: `La iglesia original es de estilo prerrománico, de una sola nave,
+          la central, con ábside trapezoidal, del siglo IX.
+          <br></br>
+          El siglo siguiente se realizó la ampliación a las tres naves actuales, añadiendo dos naves 
+          laterales a cada lado de la nave principal.`,
+        },
+        {
+          title: `Ábside central`,
+          description: `Reproducciones de las pinturas prerrománicas del siglo X, que son los únicos 
+          restos del mural prerrománico que se han conservado. Actualmente están en el Museu Diocesà 
+          i Comarcal de Solsona (MDCS), desde que se arrancaron en 1937.`,
+        },
+        {
+          title: `Absidiolo norte`,
+          description: `Reproducción de las pinturas románicas, probablemente del siglo XI, que fueron 
+          extraídas el año 1922 y se conservan actualmente en el 
+          Museu Nacional d'Art de Catalunya (MNAC), en Barcelona. 
+          <br></br>
+          En la parte superior hay dibujados los apóstoles y en la parte inferior se encuentra un 
+          cortinaje blanco con ribetes azul oscuro.`,
+        },
+        {
+          title: `Absidiolo sur`,
+          description: `Reproducción de las pinturas románicas, probablemente del siglo XI, que fueron 
+          extraídas el año 1922 y se conservan actualmente en el Museu Nacional d'Art de Catalunya (MNAC). 
+          <br></br>
+          En la zona de la vuelta, una cenefa envuelve una imagen entronizada de la Madre y el Niño. 
+          A la izquierda de la ventana grande se encuentra la parábola de las vírgenes prudentes, y a 
+          la derecha, las vírgenes necias y la personificación de la iglesia.
+          <br></br>
+          La parta inferior, hasta las jambas del arco de acceso a la sala, está decorada con patrones 
+          de greca de varios colores y cortinajes blancos con ribetes de motivos florales.`,
+        },
+        {
+          title: `Antesala`,
+          description: `De la nave sur solo se conserva una pequeña antesala contigua al absidiolo. 
+          El resto fue sustituido el siglo XIII por un campanario de torre que cayó, posiblemente 
+          con los terremotos del siglo XV`,
+        },
+      ],
     },
   },
   en: {
@@ -637,6 +788,82 @@ export const langs = {
     },
     pointCloudViewer: {
       speed: "Speed",
+      annotations: [
+        {
+          title: `< To the gothic bridge`,
+          description: `A pathway descends towards the gothic bridge of Pedret, a very well preserved 
+          stone bridge that crosses the Llobregat river and leads to the municipality of Berga.`,
+        },
+        {
+          title: `West door`,
+          description: `Durante la época prerrománica, en la cara oeste de la nave principal había una
+          puerta. Hoy día esta puerta ya no existe.`,
+        },
+        {
+          title: `Cauce de piedras`,
+          description: `Las naves son a diferentes alturas, ya que la iglesia se encuentra en desnivel 
+          porque está situada en un cauce de piedras (posiblemente de aquí el nombre de "Pedret") 
+          inclinada, siendo la nave norte la más elevada y la nave sur la más baja.`,
+        },
+        {
+          title: `Entrada`,
+          description: `Un porche da cobertura a la portada románica original, la puerta principal y único 
+          acceso actualmente al monumento. 
+          <br></br>
+          Está formada por arquivoltas lisas apoyadas en líneas de imposta, flanqueadas por capiteles 
+          decorados y sostenidos por un fuste estrigilado (oeste) y uno salomónico (este), ambos sentados 
+          en bases.`,
+        },
+        {
+          title: `Tejado`,
+          description: `Durante el cambio de etapa de estilo prerrománico a románico, se sustituyó el 
+          tejado de madera a dos aguas por la tradicional bóveda de cañón de piedra.
+          <br></br>
+          Este cambio obligó a reforzar los muros de la nave central para que pudiera soportar el nuevo 
+          tejado, que era mucho más pesado.`,
+        },
+        {
+          title: `Nave principal`,
+          description: `La iglesia original es de estilo prerrománico, de una sola nave,
+          la central, con ábside trapezoidal, del siglo IX.
+          <br></br>
+          El siglo siguiente se realizó la ampliación a las tres naves actuales, añadiendo dos naves 
+          laterales a cada lado de la nave principal.`,
+        },
+        {
+          title: `Ábside central`,
+          description: `Reproducciones de las pinturas prerrománicas del siglo X, que son los únicos 
+          restos del mural prerrománico que se han conservado. Actualmente están en el Museu Diocesà 
+          i Comarcal de Solsona (MDCS), desde que se arrancaron en 1937.`,
+        },
+        {
+          title: `Absidiolo norte`,
+          description: `Reproducción de las pinturas románicas, probablemente del siglo XI, que fueron 
+          extraídas el año 1922 y se conservan actualmente en el 
+          Museu Nacional d'Art de Catalunya (MNAC), en Barcelona. 
+          <br></br>
+          En la parte superior hay dibujados los apóstoles y en la parte inferior se encuentra un 
+          cortinaje blanco con ribetes azul oscuro.`,
+        },
+        {
+          title: `Absidiolo sur`,
+          description: `Reproducción de las pinturas románicas, probablemente del siglo XI, que fueron 
+          extraídas el año 1922 y se conservan actualmente en el Museu Nacional d'Art de Catalunya (MNAC). 
+          <br></br>
+          En la zona de la vuelta, una cenefa envuelve una imagen entronizada de la Madre y el Niño. 
+          A la izquierda de la ventana grande se encuentra la parábola de las vírgenes prudentes, y a 
+          la derecha, las vírgenes necias y la personificación de la iglesia.
+          <br></br>
+          La parta inferior, hasta las jambas del arco de acceso a la sala, está decorada con patrones 
+          de greca de varios colores y cortinajes blancos con ribetes de motivos florales.`,
+        },
+        {
+          title: `Antesala`,
+          description: `De la nave sur solo se conserva una pequeña antesala contigua al absidiolo. 
+          El resto fue sustituido el siglo XIII por un campanario de torre que cayó, posiblemente 
+          con los terremotos del siglo XV`,
+        },
+      ],
     },
   },
 };
