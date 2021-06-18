@@ -209,12 +209,24 @@ export default class PointCloudViewer extends React.Component {
             : Potree.ClipTask.SHOW_INSIDE
         );
 
-        // ========================== ANNOTATIONS  ========================== //
+        // ========================== ANNOTATIONS ========================== //
+        /*
         Annotations.forEach((a, i) => {
           a.title = this.context[0].pointCloudViewer.annotations[i].title;
           a.description =
             this.context[0].pointCloudViewer.annotations[i].description;
           scene.annotations.add(new Potree.Annotation(a));
+        }); */
+
+        // ========================== IMAGES ========================== //
+        const cameraParamsPath = `/oriented_images/camera_params.xml`;
+        const imageParamsPath = `/oriented_images/image_params.txt`;
+        Potree.OrientedImageLoader.load(
+          cameraParamsPath,
+          imageParamsPath,
+          window.viewer
+        ).then((images) => {
+          scene.addOrientedImages(images);
         });
 
         // ========================== CAMERA ANIMATIONS ========================== //
