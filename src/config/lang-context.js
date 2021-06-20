@@ -184,6 +184,22 @@ export const langs = {
               `És una tècnica de renderitzat no fotorrealista que realça els contorns de les superfícies. Resulta en una estètica que recorda al dibuix còmic, de forma similar a la tècnica cel shading.`,
             ],
           },
+          annotations: {
+            title: "Anotacions",
+            values: ["Desactivades", "Activades"],
+            description: [
+              `Etiquetes que proporcionen informació sobre els diversos punts d'interès i que, en ser clicades, situen la càmera sobre el mateix.`,
+              `Durant les rutes guiades queden desactivades.`,
+            ],
+          },
+          photos: {
+            title: "Fotografies",
+            values: ["Desactivades", "Activades"],
+            description: [
+              `Fotografies orientades sobre el model. Fent-hi clic es poden inspeccionar: la rodeta controla el zoom i els botons direccionals el desplaçament.`,
+              `Durant les rutes guiades queden desactivades.`,
+            ],
+          },
         },
       ],
     },
@@ -412,7 +428,7 @@ export const langs = {
               "WASD/Flechas: Desplazamiento",
               "Ratón 1: Dirección del desplazamiento",
               "Ratón 2: Desplazamiento del modelo",
-              "Rodeta: Modificación de la velocidad",
+              "Rueda: Modificación de la velocidad",
             ],
           },
           orbital: {
@@ -471,6 +487,22 @@ export const langs = {
             values: ["Desactivado", "Activado"],
             description: [
               `Es una técnica de renderizado no fotorrealista que realiza los contornos de las superficies. Resulta en una estética que recuerda al dibujo cómic, de forma similar a la técnica cel shading.`,
+            ],
+          },
+          annotations: {
+            title: "Anotaciones",
+            values: ["Desactivadas", "Activadas"],
+            description: [
+              `Etiquetas que proporcionan información sobre varios puntos de interés y que, en ser clicadas, situan la cámara sobre el mismo.`,
+              `Durante las rutas guiadas quedan desactivadas.`,
+            ],
+          },
+          photos: {
+            title: "Fotografías",
+            values: ["Desactivadas", "Activadas"],
+            description: [
+              `Fotografías orientadas sobre el modelo. Haciendo clic se pueden inspeccionar: la rueda controla el zoom y los botones direccionales el desplazamiento.`,
+              `Durante las rutas guiadas quedan desactivadas.`,
             ],
           },
         },
@@ -702,7 +734,7 @@ export const langs = {
               "WASD/Arrows: Movement",
               "Mouse 1: Direction of movement",
               "Mouse 2: Model displacement",
-              "Rodeta: Speed adjustment",
+              "Wheel: Speed adjustment",
             ],
           },
           orbital: {
@@ -761,6 +793,22 @@ export const langs = {
             values: ["Disabled", "Enabled"],
             description: [
               `It's a non-photorealistic shading technique that embosses surfaces' outline. The resulting aesthetic reminds of comic drawing, in a similar way to cel shading technique.`,
+            ],
+          },
+          annotations: {
+            title: "Annotations",
+            values: ["Disabled", "Enabled"],
+            description: [
+              `Labels that provide information about several points of interest and, when clicked, they position the camera on it.`,
+              `During guided routes they are disabled.`,
+            ],
+          },
+          photos: {
+            title: "Photos",
+            values: ["Disabled", "Enabled"],
+            description: [
+              `Oriented photos on the model. Clicking on them allows for closer inspection: wheel controls zoom and directional buttons displacement.`,
+              `During guided routes they are disabled.`,
             ],
           },
         },

@@ -12,6 +12,14 @@ import mouse_light from "../assets/img/configuration/mouse_light.png";
 const numWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 const Configuration = (props) => {
+  // Whether to show paragraphs in apperance item boxes or not
+  const [showAppearanceInfo, setShowApperanceInfo] = useState(
+    localStorage.getItem("showAppearanceInfo") === "true"
+  );
+  useEffect(() => {
+    localStorage.setItem("showAppearanceInfo", showAppearanceInfo);
+  }, [showAppearanceInfo]);
+
   const navItemDescriptionStyle = {
     marginTop: "3rem",
     color: !props.theme ? "white" : "black",
@@ -46,6 +54,11 @@ const Configuration = (props) => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  };
+  const appearanceInfoStyle = {
+    opacity: showAppearanceInfo ? 1 : 0,
+    maxHeight: showAppearanceInfo ? "100vh" : 0,
+    transition: "0.25s 0s all linear",
   };
 
   const printRAM = (mem, l) => {
@@ -254,7 +267,29 @@ const Configuration = (props) => {
                 : lang.configuration.sections[1].specs.RAMError
             }`}</span>
           </div>
-
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              data-aos="zoom-in"
+              style={{
+                cursor: "pointer",
+                fontSize: "2.5rem",
+                color: !props.theme ? "white" : "black",
+                margin: "1rem 0",
+              }}
+              onClick={() => setShowApperanceInfo(!showAppearanceInfo)}
+            >
+              <i
+                style={{ minWidth: "50px" }}
+                className={`fas fa-eye${showAppearanceInfo ? "-slash" : ""}`}
+              />
+              <i className="fas fa-info" />
+            </p>
+          </div>
           <div
             style={{
               display: "flex",
@@ -298,7 +333,7 @@ const Configuration = (props) => {
               <span>
                 <b>{numWithCommas(props.viewConfig.pointBudget)}</b>
               </span>
-              <div style={{ margin: "1rem 0" }}>
+              <div style={{ margin: "1rem 0", ...appearanceInfoStyle }}>
                 {lang.configuration.sections[1].pointBudget.description.map(
                   (par, i) => (
                     <p id={i}>{par}</p>
@@ -336,7 +371,7 @@ const Configuration = (props) => {
               <span>
                 <b>{props.viewConfig.fov}</b>
               </span>
-              <div style={{ margin: "1rem 0" }}>
+              <div style={{ margin: "1rem 0", ...appearanceInfoStyle }}>
                 {lang.configuration.sections[1].fov.description.map(
                   (par, i) => (
                     <p id={i}>{par}</p>
@@ -344,7 +379,7 @@ const Configuration = (props) => {
                 )}
               </div>
             </div>
-            <div style={appearanceItemStyle} data-aos="fade-up-right">
+            <div style={appearanceItemStyle} data-aos="fade-right">
               <i className="fas fa-shapes" style={{ fontSize: "2.5rem" }} />
               <p>
                 <b>{lang.configuration.sections[1].pointQuality.title}</b>
@@ -391,7 +426,7 @@ const Configuration = (props) => {
                   {lang.configuration.sections[1].pointQuality.values[1]}
                 </span>
               </div>
-              <div style={{ margin: "1rem 0" }}>
+              <div style={{ margin: "1rem 0", ...appearanceInfoStyle }}>
                 {lang.configuration.sections[1].pointQuality.description.map(
                   (par, i) => (
                     <p id={i}>{par}</p>
@@ -399,7 +434,7 @@ const Configuration = (props) => {
                 )}
               </div>
             </div>
-            <div style={appearanceItemStyle} data-aos="fade-up-left">
+            <div style={appearanceItemStyle} data-aos="fade-left">
               <i className="fas fa-lightbulb" style={{ fontSize: "2.5rem" }} />
               <p>
                 <b>{lang.configuration.sections[1].edl.title}</b>
@@ -433,13 +468,105 @@ const Configuration = (props) => {
                     ]
                   }
                 </span>
-                <div style={{ margin: "1rem 0" }}>
-                  {lang.configuration.sections[1].edl.description.map(
-                    (par, i) => (
-                      <p id={i}>{par}</p>
+              </div>
+              <div style={{ margin: "1rem 0", ...appearanceInfoStyle }}>
+                {lang.configuration.sections[1].edl.description.map(
+                  (par, i) => (
+                    <p id={i}>{par}</p>
+                  )
+                )}
+              </div>
+            </div>
+            <div style={appearanceItemStyle} data-aos="fade-up-right">
+              <i
+                className="fas fa-sticky-note"
+                style={{ fontSize: "2.5rem" }}
+              />
+              <p>
+                <b>{lang.configuration.sections[1].annotations.title}</b>
+              </p>
+              <div>
+                <span
+                  onClick={() =>
+                    props.setViewConfig(
+                      "annotations",
+                      !props.viewConfig.annotations
                     )
-                  )}
-                </div>
+                  }
+                  style={{
+                    padding: "0 0.75rem",
+                    boxShadow: props.viewConfig.annotations
+                      ? "0px 0px 5px 5px rgba(255, 0, 0, 0.35)"
+                      : "none",
+                    backgroundColor: props.viewConfig.annotations
+                      ? "rgba(255, 0, 0, 0.35)"
+                      : "transparent",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <i
+                    className={`fas ${
+                      props.viewConfig.annotations ? "fa-check" : "fa-times"
+                    }`}
+                    style={{ marginRight: "0.5rem" }}
+                  ></i>
+                  {
+                    lang.configuration.sections[1].annotations.values[
+                      props.viewConfig.annotations ? 1 : 0
+                    ]
+                  }
+                </span>
+              </div>
+              <div style={{ margin: "1rem 0", ...appearanceInfoStyle }}>
+                {lang.configuration.sections[1].annotations.description.map(
+                  (par, i) => (
+                    <p id={i}>{par}</p>
+                  )
+                )}
+              </div>
+            </div>
+            <div style={appearanceItemStyle} data-aos="fade-up-left">
+              <i className="fas fa-image" style={{ fontSize: "2.5rem" }} />
+              <p>
+                <b>{lang.configuration.sections[1].photos.title}</b>
+              </p>
+              <div>
+                <span
+                  onClick={() =>
+                    props.setViewConfig("photos", !props.viewConfig.photos)
+                  }
+                  style={{
+                    padding: "0 0.75rem",
+                    boxShadow: props.viewConfig.photos
+                      ? "0px 0px 5px 5px rgba(255, 0, 0, 0.35)"
+                      : "none",
+                    backgroundColor: props.viewConfig.photos
+                      ? "rgba(255, 0, 0, 0.35)"
+                      : "transparent",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <i
+                    className={`fas ${
+                      props.viewConfig.photos ? "fa-check" : "fa-times"
+                    }`}
+                    style={{ marginRight: "0.5rem" }}
+                  ></i>
+                  {
+                    lang.configuration.sections[1].photos.values[
+                      props.viewConfig.photos ? 1 : 0
+                    ]
+                  }
+                </span>
+              </div>
+              <div style={{ margin: "1rem 0", ...appearanceInfoStyle }}>
+                {lang.configuration.sections[1].photos.description.map(
+                  (par, i) => (
+                    <p id={i}>{par}</p>
+                  )
+                )}
               </div>
             </div>
           </div>

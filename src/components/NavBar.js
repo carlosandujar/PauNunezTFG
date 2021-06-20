@@ -62,7 +62,7 @@ const NavBar = (props) => {
             <Scroll.Link
               to="footer"
               smooth={true}
-              offset={100}
+              offset={130}
               className="navbar-link"
               style={navBarLinkStyle}
             >

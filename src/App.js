@@ -23,18 +23,20 @@ function App() {
     langs[localStorage.getItem("lang") || "ca"]
   );
   // 0 = dark, 1 = light
-  const [theme, setTheme] = useState(
-    (localStorage.getItem("theme") === "true" ? true : false) || false
-  );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") === "true");
   const [activeBB, setActiveBB] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [viewType, setViewType] = useState(null); // 0 = FULL, 1 = PLANT, 2 = SELECTION
   const [viewConfig, setViewConfig] = useState({
     controls: 0, // 0 - FPS, 1 - Orbital
-    pointBudget: 1e6, // [100e3 ... 10e6]
+    pointBudget: localStorage.getItem("pointBudget") // [100e3 ... 10e6]
+      ? parseInt(localStorage.getItem("pointBudget"))
+      : 1e6,
     fov: 60, // [20 ... 100]
     pointQuality: 0, // 0 - Standard (square), 1 - High (circle)
-    edl: false, // false - no, true - yes
-    compass: true, // false - no, true - yes
+    edl: false,
+    compass: true,
+    annotations: localStorage.getItem("annotations") === "true",
+    photos: localStorage.getItem("photos") === "true",
   });
   const [GPU, setGPU] = useState({
     isMobile: "-",
@@ -60,6 +62,16 @@ function App() {
     localStorage.setItem("theme", theme);
     document.body.style.backgroundColor = !theme ? "rgb(15, 15, 15)" : "white";
   }, [theme]);
+  // Save user's Viewer Configuration
+  useEffect(() => {
+    localStorage.setItem("annotations", viewConfig.annotations);
+  }, [viewConfig.annotations]);
+  useEffect(() => {
+    localStorage.setItem("photos", viewConfig.photos);
+  }, [viewConfig.photos]);
+  useEffect(() => {
+    localStorage.setItem("pointBudget", viewConfig.pointBudget);
+  }, [viewConfig.pointBudget]);
 
   // Get GPU and other hardware info @ mount
   useEffect(() => {
@@ -76,12 +88,19 @@ function App() {
   // when GPU info is already available
   useEffect(() => {
     if (GPU.tier !== "-") {
-      const values = [900e3, 4e6, 700e3];
+      const values = [900e3, 4e6, 8e6];
       setViewConfig((prev) => ({
         ...prev,
         pointBudget: values[GPU.tier - 1],
         pointQuality: GPU.tier > 2 ? 1 : 0,
       }));
+      const pb = localStorage.getItem("pointBudget");
+      if (pb) {
+        setViewConfig((prev) => ({
+          ...prev,
+          pointBudget: parseInt(pb),
+        }));
+      }
     }
   }, [GPU]);
 
