@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-TFG - Treball de Final de Grau
+TFG - Treball de Final de Grau  
 </h1>
 
 <h2 align="center"> Exploració Interactiva de Models de Patrimoni Cultural </h2>
